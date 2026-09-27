@@ -1,0 +1,151 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['workers'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-workers" aria-labelledby={`${anchor}-h`} {...bf('home.workers.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="workers" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} intro={content.intro} />
+
+    <ul class="home-workers__comb">
+      {
+        content.items.map((worker) => (
+          <li class="home-workers__bee" data-reveal>
+            <div class="home-workers__hex home-hex">
+              <p class="home-workers__role home-mono" {...bf(`home.workers.${worker.id}_role`, 'copy')}>{worker.role}</p>
+              <h3 class="home-workers__name" {...bf(`home.workers.${worker.id}_name`, 'copy')}>{worker.name}</h3>
+            </div>
+            <p class="home-text home-workers__desc" {...bf(`home.workers.${worker.id}_description`, 'copy')}>{worker.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="home-workers__services home-card home-card--honey" data-reveal>
+      <h3 class="home-h3" {...bf('home.workers.services_heading', 'copy')}>{content.services_heading}</h3>
+      <ul class="home-workers__list">
+        {
+          content.services.map((service) => (
+            <li>
+              <strong {...bf(`home.workers.${service.id}_name`, 'copy')}>{service.name}</strong>
+              <span {...bf(`home.workers.${service.id}_description`, 'copy')}>{service.description}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-workers__comb {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1rem;
+    margin: 0 0 3.5rem;
+    padding: 0;
+    list-style: none;
+  }
+  .home-workers__bee {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .home-workers__bee:last-child {
+    grid-column: 1 / -1;
+  }
+  .home-workers__hex {
+    display: grid;
+    place-content: center;
+    gap: 0.25rem;
+    width: min(100%, 8.5rem);
+    aspect-ratio: 0.866;
+    padding: 0.75rem;
+    background: var(--bh-ink);
+    color: var(--bh-paper);
+    transition: background-color var(--bh-fast) var(--bh-ease);
+  }
+  .home-workers__bee:hover .home-workers__hex {
+    background: var(--bh-honey);
+    color: var(--bh-ink);
+  }
+  .home-workers__role {
+    margin: 0;
+    font-size: var(--bh-text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--bh-honey);
+  }
+  .home-workers__bee:hover .home-workers__role {
+    color: var(--bh-ink);
+  }
+  .home-workers__name {
+    margin: 0;
+    font-size: var(--bh-text-base);
+    font-stretch: 112%;
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+  .home-workers__desc {
+    max-width: 24ch;
+    font-size: var(--bh-text-sm);
+  }
+  .home-workers__services {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .home-workers__list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .home-workers__list li {
+    display: grid;
+    gap: 0.125rem;
+    padding: 0.875rem 0;
+    border-top: var(--bh-border-thin) solid var(--bh-ink);
+  }
+  .home-workers__list strong {
+    font-stretch: 112%;
+    text-transform: uppercase;
+  }
+  @media (min-width: 48rem) {
+    .home-workers__comb {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .home-workers__bee:last-child {
+      grid-column: auto;
+    }
+    .home-workers__hex {
+      width: min(100%, 10rem);
+    }
+    .home-workers__name {
+      font-size: var(--bh-text-lg);
+    }
+    .home-workers__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .home-workers__bee:nth-child(even) {
+      margin-top: 4rem;
+    }
+    .home-workers__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

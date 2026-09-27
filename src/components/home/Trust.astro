@@ -1,0 +1,45 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['trust'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-trust" aria-labelledby={`${anchor}-h`} {...bf('home.trust.shell', 'container')}>
+  <div class="home-container home-trust__grid">
+    <SectionHeader section="trust" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} intro={content.body} introField="body" align="start" />
+    <ul class="home-hexlist home-trust__list home-card" data-reveal>
+      {content.items.map((item) => <li {...bf(`home.trust.${item.id}_text`, 'copy')}>{item.text}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .home-trust {
+    background: var(--bh-paper-2);
+  }
+  .home-trust__grid {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+  }
+  .home-trust__list {
+    gap: 1.25rem;
+    padding: 2rem;
+    font-size: var(--bh-text-lg);
+    font-weight: 600;
+  }
+  @media (min-width: 64rem) {
+    .home-trust__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+  }
+</style>

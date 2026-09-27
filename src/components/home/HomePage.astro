@@ -1,0 +1,66 @@
+---
+import { getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Hero from './Hero.astro';
+import Problem from './Problem.astro';
+import WhatIs from './WhatIs.astro';
+import HowItWorks from './HowItWorks.astro';
+import Hives from './Hives.astro';
+import Workers from './Workers.astro';
+import Benefits from './Benefits.astro';
+import Audiences from './Audiences.astro';
+import Numbers from './Numbers.astro';
+import Trust from './Trust.astro';
+import Faq from './Faq.astro';
+import FinalCta from './FinalCta.astro';
+import { sectionAnchors, type Locale } from '../../lib/i18n';
+import { homeStructuredData } from '../../lib/seo';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const entry = await getEntry('home', lang);
+if (!entry) throw new Error(`Missing src/content/home/${lang}.yaml`);
+const content = entry.data;
+const a = sectionAnchors[lang];
+const total = 11;
+const tickerWords = [
+  ...content.hives.items.map((hive) => hive.title),
+  ...content.workers.items.map((worker) => worker.role),
+];
+---
+
+<Layout
+  lang={lang}
+  title={content.meta.title}
+  description={content.meta.description}
+  content={content}
+  structuredData={homeStructuredData(content, lang)}
+>
+  <Hero
+    lang={lang}
+    hero={content.hero}
+    hives={content.hives.items}
+    tickerWords={tickerWords}
+    successMessage={content.waitlist.success_heading}
+    submittingLabel={content.waitlist.submitting_label}
+  />
+  <Problem content={content.problem} anchor={a.problem} index={1} total={total} />
+  <WhatIs content={content.whatis} anchor={a.whatis} index={2} total={total} />
+  <HowItWorks content={content.how} anchor={a.how} index={3} total={total} />
+  <Hives content={content.hives} anchor={a.hives} index={4} total={total} />
+  <Workers content={content.workers} anchor={a.workers} index={5} total={total} />
+  <Benefits content={content.benefits} anchor={a.benefits} index={6} total={total} />
+  <Audiences content={content.audiences} anchor={a.audiences} waitlistAnchor={a.waitlist} index={7} total={total} />
+  <Numbers content={content.numbers} anchor={a.numbers} index={8} total={total} />
+  <Trust content={content.trust} anchor={a.trust} index={9} total={total} />
+  <Faq content={content.faq} anchor={a.faq} index={10} total={total} />
+  <FinalCta lang={lang} content={content.waitlist} anchor={a.waitlist} index={11} total={total} />
+
+  <script>
+    import { initAllWaitlists } from '../../scripts/waitlist';
+    initAllWaitlists();
+  </script>
+</Layout>

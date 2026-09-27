@@ -1,0 +1,62 @@
+---
+import BaseHead from '../components/ui/BaseHead.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import type { HomeContent } from '../lib/home-schema';
+import { htmlLang, type Locale } from '../lib/i18n';
+import { bf } from '../lib/bsi';
+import '../styles/global.css';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description: string;
+  content: HomeContent;
+  imageAlt?: string;
+  noindex?: boolean;
+  alternateLocales?: boolean;
+  structuredData?: Record<string, unknown>;
+  /** In-page anchors resolve against the home page from secondary pages. */
+  anchorBase?: string;
+}
+
+const {
+  lang,
+  title,
+  description,
+  content,
+  imageAlt,
+  noindex,
+  alternateLocales,
+  structuredData,
+  anchorBase = '',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <BaseHead
+      title={title}
+      description={description}
+      lang={lang}
+      imageAlt={imageAlt ?? content.meta.og_image_alt}
+      noindex={noindex}
+      alternateLocales={alternateLocales}
+      structuredData={structuredData}
+    />
+  </head>
+  <body>
+    <a class="site-skip" href="#contenido" {...bf("shared.nav.skip_label", "chrome_denied")}>{content.nav.skip_label}</a>
+    <Header lang={lang} nav={content.nav} anchorBase={anchorBase} />
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} footer={content.footer} />
+    <script>
+      import { initReveal } from '../scripts/reveal';
+      initReveal();
+    </script>
+  </body>
+</html>

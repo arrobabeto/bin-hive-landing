@@ -1,0 +1,1990 @@
+# Binflow Surface Inventory (BSI) — bin-hive-landing (astro-repo profile)
+# Generated/merged by `pnpm bsi:sync`; verified by `pnpm test` and `pnpm check:bsi`.
+# bf_ids are API contracts: never rename them. Rules: docs/BSI.md
+version: 1
+project_key: bin-hive-landing
+surfaces:
+  - bf_id: shared.nav.shell
+    kind: container
+    area: shared
+    section: nav
+    path: src/components/layout/Header.astro
+    locator: github:src/components/layout/Header.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.hero.shell
+    kind: container
+    area: home
+    section: hero
+    path: src/components/home/Hero.astro
+    locator: github:src/components/home/Hero.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.problem.shell
+    kind: container
+    area: home
+    section: problem
+    path: src/components/home/Problem.astro
+    locator: github:src/components/home/Problem.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.whatis.shell
+    kind: container
+    area: home
+    section: whatis
+    path: src/components/home/WhatIs.astro
+    locator: github:src/components/home/WhatIs.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.how.shell
+    kind: container
+    area: home
+    section: how
+    path: src/components/home/HowItWorks.astro
+    locator: github:src/components/home/HowItWorks.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.hives.shell
+    kind: container
+    area: home
+    section: hives
+    path: src/components/home/Hives.astro
+    locator: github:src/components/home/Hives.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.workers.shell
+    kind: container
+    area: home
+    section: workers
+    path: src/components/home/Workers.astro
+    locator: github:src/components/home/Workers.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.benefits.shell
+    kind: container
+    area: home
+    section: benefits
+    path: src/components/home/Benefits.astro
+    locator: github:src/components/home/Benefits.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.audiences.shell
+    kind: container
+    area: home
+    section: audiences
+    path: src/components/home/Audiences.astro
+    locator: github:src/components/home/Audiences.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.numbers.shell
+    kind: container
+    area: home
+    section: numbers
+    path: src/components/home/Numbers.astro
+    locator: github:src/components/home/Numbers.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.trust.shell
+    kind: container
+    area: home
+    section: trust
+    path: src/components/home/Trust.astro
+    locator: github:src/components/home/Trust.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.faq.shell
+    kind: container
+    area: home
+    section: faq
+    path: src/components/home/Faq.astro
+    locator: github:src/components/home/Faq.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.waitlist.shell
+    kind: container
+    area: home
+    section: waitlist
+    path: src/components/home/FinalCta.astro
+    locator: github:src/components/home/FinalCta.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: shared.footer.shell
+    kind: container
+    area: shared
+    section: footer
+    path: src/components/layout/Footer.astro
+    locator: github:src/components/layout/Footer.astro#shell
+    locales: [es, en]
+    publication_target: github_content
+    sample: ""
+  - bf_id: home.meta.og_image
+    kind: image
+    area: home
+    section: meta
+    path: public/og/og-{locale}.png
+    locator: github:public/og/og-{locale}.png
+    locales: [es, en]
+    publication_target: github_content
+    presentation: img
+    sample: public/og/og-es.png
+    alt_locator: github:src/content/home/{locale}.yaml#meta.og_image_alt
+  - bf_id: home.meta.title
+    kind: copy
+    area: home
+    section: meta
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#meta.title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Agentes de IA para redes sociales con propósito | Bin Hive
+    notes: Rendered in <head> (title/meta); no data-bf-* marker possible.
+  - bf_id: home.meta.description
+    kind: copy
+    area: home
+    section: meta
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#meta.description
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Agentes de IA para redes sociales: Bin Hive convierte una idea en hooks, guiones y copies para Instagram, TikTok, YouTube Shorts y X. Únete a la lista."
+    notes: Rendered in <head> (title/meta); no data-bf-* marker possible.
+  - bf_id: shared.nav.skip_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.skip_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Saltar al contenido
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.home_aria_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.home_aria_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Bin Hive, inicio
+    deny_reason: Accessibility metadata — not body copy
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.how_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=how].label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cómo funciona
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.how_href
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=how].href
+    locales: [es, en]
+    publication_target: github_content
+    sample: "#como-funciona"
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.hives_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=hives].label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Colmenas
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.hives_href
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=hives].href
+    locales: [es, en]
+    publication_target: github_content
+    sample: "#colmenas"
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.audiences_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=audiences].label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Para quién
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.audiences_href
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=audiences].href
+    locales: [es, en]
+    publication_target: github_content
+    sample: "#para-quien"
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.faq_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=faq].label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Preguntas
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.faq_href
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.links[id=faq].href
+    locales: [es, en]
+    publication_target: github_content
+    sample: "#preguntas"
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.menu_aria_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.menu_aria_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Secciones de la página
+    deny_reason: Accessibility metadata — not body copy
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.cta_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.cta_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Unirme a la lista
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.cta_href
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.cta_href
+    locales: [es, en]
+    publication_target: github_content
+    sample: "#lista-de-espera"
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.lang_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.lang_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: EN
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.lang_aria_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.lang_aria_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Read this page in English
+    deny_reason: Accessibility metadata — not body copy
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.hero.eyebrow
+    kind: copy
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Apiario de IA · Release en camino
+  - bf_id: home.hero.heading
+    kind: style_target
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Agentes de IA para redes sociales, organizados como una colmena.
+  - bf_id: home.hero.subheading
+    kind: copy
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.subheading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Bin Hive convierte una idea suelta en ideas, hooks, guiones y copies listos para aprobar. Una colmena por red, y un objetivo claro detrás de cada pieza.
+  - bf_id: home.hero.body
+    kind: copy
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.body
+    locales: [es, en]
+    publication_target: github_content
+    sample: Dejas de publicar por publicar. Tú pones la idea y el criterio; la colmena pone el oficio de cada red.
+  - bf_id: home.hero.email_label
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.email_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tu correo
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.hero.email_placeholder
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.email_placeholder
+    locales: [es, en]
+    publication_target: github_content
+    sample: tu@correo.com
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.hero.submit_label
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.submit_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Quiero acceso anticipado
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.hero.secondary_cta_label
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.secondary_cta_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Ver cómo funciona
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.hero.secondary_cta_href
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.secondary_cta_href
+    locales: [es, en]
+    publication_target: github_content
+    sample: "#como-funciona"
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.hero.microcopy
+    kind: copy
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.microcopy
+    locales: [es, en]
+    publication_target: github_content
+    sample: Sin spam. Te escribimos cuando abramos lugares, y nada más.
+  - bf_id: home.hero.visual_alt
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.visual_alt
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Panal con cuatro celdas activas: Instagram, TikTok, YouTube Shorts y X"
+    deny_reason: Accessibility metadata — not body copy
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.problem.eyebrow
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: El problema
+  - bf_id: home.problem.heading
+    kind: style_target
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Publicar todos los días sin rumbo cansa. Y se nota.
+  - bf_id: home.problem.intro
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.intro
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tienes ideas, pero convertirlas en contenido que funcione en cada red es otro trabajo. Y cuando la IA genérica entra al juego, todo empieza a sonar igual.
+  - bf_id: home.problem.generic_title
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=generic].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Contenido genérico
+  - bf_id: home.problem.generic_description
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=generic].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Un mismo texto pegado en cuatro redes no funciona en ninguna. Cada plataforma premia otra duración, otro hook y otro cierre.
+  - bf_id: home.problem.repeat_title
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=repeat].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Ideas que se repiten
+  - bf_id: home.problem.repeat_description
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=repeat].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Sin memoria, vuelves a proponer lo que ya publicaste hace dos meses, con otras palabras.
+  - bf_id: home.problem.purpose_title
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=purpose].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Piezas sin objetivo
+  - bf_id: home.problem.purpose_description
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=purpose].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Si no sabes para qué existe un video, tampoco sabes si funcionó.
+  - bf_id: home.problem.feedback_title
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=feedback].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Métricas que nadie lee
+  - bf_id: home.problem.feedback_description
+    kind: copy
+    area: home
+    section: problem
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#problem.items[id=feedback].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Los números viven en un CSV y nunca regresan a la siguiente idea.
+  - bf_id: home.whatis.eyebrow
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Qué es Bin Hive
+  - bf_id: home.whatis.heading
+    kind: style_target
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Un apiario de agentes de IA con un solo propósito: tu contenido."
+  - bf_id: home.whatis.body
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.body
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Bin Hive organiza a sus agentes como una colmena real. Cada uno tiene un oficio, cada red tiene su propio equipo y todo pasa por ti antes de salir. No es un chat que improvisa: es un sistema con roles, memoria y control de calidad."
+  - bf_id: home.whatis.beekeeper_name
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=beekeeper].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Apicultor
+  - bf_id: home.whatis.beekeeper_role
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=beekeeper].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tu punto de entrada
+  - bf_id: home.whatis.beekeeper_description
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=beekeeper].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Le pasas una idea, un borrador o un guion a medias. Él decide qué colmenas y qué agentes necesita tu pedido.
+  - bf_id: home.whatis.hive_name
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=hive].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Colmenas
+  - bf_id: home.whatis.hive_role
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=hive].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Un equipo por red
+  - bf_id: home.whatis.hive_description
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=hive].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Instagram, TikTok, YouTube Shorts y X tienen su propio equipo, afinado con lo que funciona en cada plataforma.
+  - bf_id: home.whatis.queen_name
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=queen].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Reina
+  - bf_id: home.whatis.queen_role
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=queen].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Las reglas de cada colmena
+  - bf_id: home.whatis.queen_description
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=queen].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Guarda los valores por defecto de su red y arma el equipo justo para cada solicitud.
+  - bf_id: home.whatis.workers_name
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=workers].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Obreras
+  - bf_id: home.whatis.workers_role
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=workers].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Especialistas
+  - bf_id: home.whatis.workers_description
+    kind: copy
+    area: home
+    section: whatis
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#whatis.roles[id=workers].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Ideas, hooks, guiones, copies y pruebas. Solo trabajan las que tu pedido necesita.
+  - bf_id: home.how.eyebrow
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cómo funciona
+  - bf_id: home.how.heading
+    kind: style_target
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cómo trabajan los agentes de IA de Bin Hive, en seis pasos.
+  - bf_id: home.how.intro
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.intro
+    locales: [es, en]
+    publication_target: github_content
+    sample: De una idea suelta a una pieza lista para grabar o publicar. Sin formularios eternos y sin empezar de cero cada vez.
+  - bf_id: home.how.ask_title
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=ask].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Pides desde donde estés
+  - bf_id: home.how.ask_description
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=ask].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Un tema, una frase, un borrador, un guion final o una pieza vieja para reciclar. La colmena arranca desde ahí.
+  - bf_id: home.how.interview_title
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=interview].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Te pregunta solo lo que falta
+  - bf_id: home.how.interview_description
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=interview].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Si algo no está claro, te hace hasta 4 preguntas por ronda. Si ya lo dijiste, no te lo vuelve a pedir.
+  - bf_id: home.how.work_title
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=work].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: La colmena trabaja en paralelo
+  - bf_id: home.how.work_description
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=work].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cada obrera hace su parte al mismo tiempo que las demás, cuando el trabajo lo permite.
+  - bf_id: home.how.review_title
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=review].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Revisión automática
+  - bf_id: home.how.review_description
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=review].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Una catadora prueba la pieza contra las reglas de la red, y las guardianas cuidan tu tono y los datos. Hasta 2 rondas de corrección.
+  - bf_id: home.how.approve_title
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=approve].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tú apruebas
+  - bf_id: home.how.approve_description
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=approve].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Eliges la idea, ajustas lo que quieras y decides qué se publica. Nada sale sin tu visto bueno.
+  - bf_id: home.how.learn_title
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=learn].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: La memoria aprende
+  - bf_id: home.how.learn_description
+    kind: copy
+    area: home
+    section: how
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#how.steps[id=learn].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Lo aprobado, lo rechazado y tus métricas alimentan la siguiente solicitud.
+  - bf_id: home.hives.eyebrow
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Colmenas por red
+  - bf_id: home.hives.heading
+    kind: style_target
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Una colmena nativa para cada red social.
+  - bf_id: home.hives.intro
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.intro
+    locales: [es, en]
+    publication_target: github_content
+    sample: Agentes genéricos producen contenido genérico. Por eso cada red tiene su propio equipo, con su duración, su estilo de hook y su llamada a la acción.
+  - bf_id: home.hives.instagram_title
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=instagram].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Instagram
+  - bf_id: home.hives.instagram_tagline
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=instagram].tagline
+    locales: [es, en]
+    publication_target: github_content
+    sample: Reels de 30 segundos
+  - bf_id: home.hives.instagram_description
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=instagram].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Hook en los primeros 3 segundos, cierre en loop y un llamado a guardar. Pensada para descubrimiento y confianza diaria.
+  - bf_id: home.hives.tiktok_title
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=tiktok].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: TikTok
+  - bf_id: home.hives.tiktok_tagline
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=tiktok].tagline
+    locales: [es, en]
+    publication_target: github_content
+    sample: Resultado primero
+  - bf_id: home.hives.tiktok_description
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=tiktok].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Abre con el resultado, dice la palabra clave en voz y subtitula todo, porque mucha gente ve sin sonido.
+  - bf_id: home.hives.youtube_title
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=youtube].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: YouTube Shorts
+  - bf_id: home.hives.youtube_tagline
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=youtube].tagline
+    locales: [es, en]
+    publication_target: github_content
+    sample: Hook en 2 segundos
+  - bf_id: home.hives.youtube_description
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=youtube].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Directo al grano, con un puente hacia tus videos largos y la suscripción como siguiente paso.
+  - bf_id: home.hives.x_title
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=x].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: X
+  - bf_id: home.hives.x_tagline
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=x].tagline
+    locales: [es, en]
+    publication_target: github_content
+    sample: Opinión con datos
+  - bf_id: home.hives.x_description
+    kind: copy
+    area: home
+    section: hives
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hives.items[id=x].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Posturas claras, datos concretos y una pregunta que invite a responder. Ideal para posicionarte y conversar.
+  - bf_id: home.workers.eyebrow
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Las obreras
+  - bf_id: home.workers.heading
+    kind: style_target
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Especialistas de IA que trabajan como un equipo editorial.
+  - bf_id: home.workers.intro
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.intro
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cada colmena tiene cinco obreras. Encima de ellas, siete servicios compartidos cuidan la estrategia, las tendencias, las métricas y tu marca.
+  - bf_id: home.workers.ideadora_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=ideadora].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Ideadora
+  - bf_id: home.workers.ideadora_role
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=ideadora].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Ideas
+  - bf_id: home.workers.ideadora_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=ideadora].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Propone ideas alineadas a tus pilares y descarta las que ya usaste.
+  - bf_id: home.workers.aguijon_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=aguijon].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Aguijón
+  - bf_id: home.workers.aguijon_role
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=aguijon].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Hooks
+  - bf_id: home.workers.aguijon_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=aguijon].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Escribe y rankea los primeros segundos, donde se gana o se pierde a la audiencia.
+  - bf_id: home.workers.guionista_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=guionista].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Guionista
+  - bf_id: home.workers.guionista_role
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=guionista].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Guiones
+  - bf_id: home.workers.guionista_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=guionista].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Convierte la idea elegida en un guion con el ritmo y la duración de la red.
+  - bf_id: home.workers.pluma_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=pluma].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Pluma
+  - bf_id: home.workers.pluma_role
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=pluma].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Copy
+  - bf_id: home.workers.pluma_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=pluma].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Caption, hashtags y llamada a la acción, sin frases de texto de IA.
+  - bf_id: home.workers.catadora_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=catadora].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Catadora
+  - bf_id: home.workers.catadora_role
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=catadora].role
+    locales: [es, en]
+    publication_target: github_content
+    sample: Pruebas
+  - bf_id: home.workers.catadora_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.items[id=catadora].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Revisa las specs de la red y simula cómo reaccionaría tu audiencia.
+  - bf_id: home.workers.services_heading
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services_heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Servicios compartidos del apiario
+  - bf_id: home.workers.arquitecta_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=arquitecta].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Arquitecta
+  - bf_id: home.workers.arquitecta_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=arquitecta].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Estrategia editorial y plan semanal.
+  - bf_id: home.workers.exploradora_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=exploradora].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Exploradora
+  - bf_id: home.workers.exploradora_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=exploradora].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Radar de tendencias con fuentes citadas.
+  - bf_id: home.workers.danzante_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=danzante].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Danzante
+  - bf_id: home.workers.danzante_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=danzante].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Lee tus métricas y encuentra qué funciona.
+  - bf_id: home.workers.cronista_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=cronista].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cronista
+  - bf_id: home.workers.cronista_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=cronista].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Historias de build in public y procesos.
+  - bf_id: home.workers.guardiana_marca_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=guardiana_marca].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Guardiana de marca
+  - bf_id: home.workers.guardiana_marca_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=guardiana_marca].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cuida tu voz y tu tono en cada pieza.
+  - bf_id: home.workers.guardiana_tecnica_name
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=guardiana_tecnica].name
+    locales: [es, en]
+    publication_target: github_content
+    sample: Guardiana técnica
+  - bf_id: home.workers.guardiana_tecnica_description
+    kind: copy
+    area: home
+    section: workers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#workers.services[id=guardiana_tecnica].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Verifica datos antes de que los digas.
+  - bf_id: home.benefits.eyebrow
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Por qué Bin Hive
+  - bf_id: home.benefits.heading
+    kind: style_target
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Más contenido con intención, menos contenido de relleno.
+  - bf_id: home.benefits.native_title
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=native].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Nativo por red, no adaptado
+  - bf_id: home.benefits.native_description
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=native].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cada colmena escribe para su plataforma desde el inicio, en lugar de recortar un texto único.
+  - bf_id: home.benefits.goal_title
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=goal].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cada pieza tiene un porqué
+  - bf_id: home.benefits.goal_description
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=goal].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Posicionamiento, confianza o leads: el objetivo se declara antes de escribir y se mide después."
+  - bf_id: home.benefits.memory_title
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=memory].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: No se repite
+  - bf_id: home.benefits.memory_description
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=memory].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Revisa la memoria antes y después de generar para no proponerte lo mismo dos veces.
+  - bf_id: home.benefits.quality_title
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=quality].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Control de calidad integrado
+  - bf_id: home.benefits.quality_description
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=quality].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Quien escribe y quien revisa no comparten contexto. Así la revisión es honesta.
+  - bf_id: home.benefits.tuning_title
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=tuning].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Se afina en tu idioma
+  - bf_id: home.benefits.tuning_description
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=tuning].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Dile “quiero hooks más polémicos en TikTok” y la colmena ajusta su configuración.
+  - bf_id: home.benefits.control_title
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=control].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tú tienes la última palabra
+  - bf_id: home.benefits.control_description
+    kind: copy
+    area: home
+    section: benefits
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#benefits.items[id=control].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Bin Hive propone, tú decides. Nada se publica de forma automática.
+  - bf_id: home.audiences.eyebrow
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Para quién
+  - bf_id: home.audiences.heading
+    kind: style_target
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Hecho para creadores y para agencias que llevan varias marcas.
+  - bf_id: home.audiences.creators_title
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=creators].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Creadores y marcas personales
+  - bf_id: home.audiences.creators_description
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=creators].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Para quien quiere publicar seguido sin perder su voz ni el rumbo editorial.
+  - bf_id: home.audiences.creators_daily_text
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=creators].points[id=daily].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Sostén una cadencia diaria con un equipo pequeño.
+  - bf_id: home.audiences.creators_voice_text
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=creators].points[id=voice].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tu tono y tus pilares, siempre presentes.
+  - bf_id: home.audiences.creators_metrics_text
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=creators].points[id=metrics].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Tus métricas regresan a la siguiente idea.
+  - bf_id: home.audiences.creators_cta_label
+    kind: chrome_denied
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=creators].cta_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Soy creador, quiero entrar
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.audiences.agencies_title
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=agencies].title
+    locales: [es, en]
+    publication_target: github_content
+    sample: Agencias y equipos de social media
+  - bf_id: home.audiences.agencies_description
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=agencies].description
+    locales: [es, en]
+    publication_target: github_content
+    sample: Unifica la creación y la planificación de todos tus clientes en un solo lugar.
+  - bf_id: home.audiences.agencies_profiles_text
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=agencies].points[id=profiles].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Un perfil por cliente, gestionado bajo tu cuenta de agencia.
+  - bf_id: home.audiences.agencies_voices_text
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=agencies].points[id=voices].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cada perfil con su propia voz, objetivos y colmenas.
+  - bf_id: home.audiences.agencies_planning_text
+    kind: copy
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=agencies].points[id=planning].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Planificación y aprobaciones de todas las cuentas, en un solo tablero.
+  - bf_id: home.audiences.agencies_cta_label
+    kind: chrome_denied
+    area: home
+    section: audiences
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#audiences.items[id=agencies].cta_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Soy agencia, quiero entrar
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.numbers.eyebrow
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: La colmena en números
+  - bf_id: home.numbers.heading
+    kind: style_target
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Un sistema de agentes con estructura real.
+  - bf_id: home.numbers.agents_value
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=agents].value
+    locales: [es, en]
+    publication_target: github_content
+    sample: "27"
+  - bf_id: home.numbers.agents_caption
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=agents].caption
+    locales: [es, en]
+    publication_target: github_content
+    sample: agentes especializados
+  - bf_id: home.numbers.hives_value
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=hives].value
+    locales: [es, en]
+    publication_target: github_content
+    sample: "4"
+  - bf_id: home.numbers.hives_caption
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=hives].caption
+    locales: [es, en]
+    publication_target: github_content
+    sample: colmenas, una por red
+  - bf_id: home.numbers.memory_value
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=memory].value
+    locales: [es, en]
+    publication_target: github_content
+    sample: 90 días
+  - bf_id: home.numbers.memory_caption
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=memory].caption
+    locales: [es, en]
+    publication_target: github_content
+    sample: de memoria sin repetir ideas
+  - bf_id: home.numbers.questions_value
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=questions].value
+    locales: [es, en]
+    publication_target: github_content
+    sample: ≤4
+  - bf_id: home.numbers.questions_caption
+    kind: copy
+    area: home
+    section: numbers
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#numbers.items[id=questions].caption
+    locales: [es, en]
+    publication_target: github_content
+    sample: preguntas por ronda, solo si falta algo
+  - bf_id: home.trust.eyebrow
+    kind: copy
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Control
+  - bf_id: home.trust.heading
+    kind: style_target
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: La IA propone. Tú decides qué sale al aire.
+  - bf_id: home.trust.body
+    kind: copy
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.body
+    locales: [es, en]
+    publication_target: github_content
+    sample: Bin Hive nació para producir el contenido de @arrobabeto todos los días. Por eso está hecho para trabajar contigo, no en tu lugar.
+  - bf_id: home.trust.approve_text
+    kind: copy
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.items[id=approve].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: Apruebas cada pieza antes de publicarla.
+  - bf_id: home.trust.no_autopublish_text
+    kind: copy
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.items[id=no_autopublish].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: No publica por su cuenta en tus redes.
+  - bf_id: home.trust.no_invent_text
+    kind: copy
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.items[id=no_invent].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Nunca inventa datos de tus productos: marca lo que falta para que lo confirmes."
+  - bf_id: home.trust.isolated_text
+    kind: copy
+    area: home
+    section: trust
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#trust.items[id=isolated].text
+    locales: [es, en]
+    publication_target: github_content
+    sample: La escritora y la revisora trabajan con contextos separados.
+  - bf_id: home.faq.eyebrow
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Preguntas frecuentes
+  - bf_id: home.faq.heading
+    kind: style_target
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Preguntas frecuentes sobre Bin Hive.
+  - bf_id: home.faq.what_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=what].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Qué es Bin Hive?
+  - bf_id: home.faq.what_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=what].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: Bin Hive es un apiario de agentes de IA para redes sociales. Convierte una idea en ideas, hooks, guiones y copies para Instagram, TikTok, YouTube Shorts y X, con una colmena especializada por red.
+  - bf_id: home.faq.publish_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=publish].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Publica por mí?
+  - bf_id: home.faq.publish_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=publish].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: No. Bin Hive prepara las piezas y tú decides qué se graba y qué se publica. La publicación es manual a propósito.
+  - bf_id: home.faq.generic_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=generic].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿El contenido va a sonar a IA?
+  - bf_id: home.faq.generic_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=generic].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cada pieza pasa por una revisión de tono con una lista de frases prohibidas típicas del texto generado por IA. Además, tú editas y apruebas todo antes de publicar.
+  - bf_id: home.faq.agencies_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=agencies].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Sirve para una agencia con varios clientes?
+  - bf_id: home.faq.agencies_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=agencies].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: Sí. Tu cuenta de agencia agrupa un perfil por cliente, cada uno con su voz, sus objetivos y sus colmenas, y planificas todo desde un solo lugar.
+  - bf_id: home.faq.networks_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=networks].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Qué redes sociales soporta?
+  - bf_id: home.faq.networks_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=networks].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: Instagram (Reels), TikTok, YouTube Shorts y X. Cada una tiene su propia colmena y se pueden sumar más redes después.
+  - bf_id: home.faq.release_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=release].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Cuándo puedo usarlo?
+  - bf_id: home.faq.release_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=release].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: Estamos preparando el release. Anótate en la lista de espera y te avisamos primero cuando abramos lugares.
+  - bf_id: home.faq.price_question
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=price].question
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Cuánto cuesta?
+  - bf_id: home.faq.price_answer
+    kind: copy
+    area: home
+    section: faq
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#faq.items[id=price].answer
+    locales: [es, en]
+    publication_target: github_content
+    sample: Los planes se anunciarán con el release. Quienes estén en la lista de espera los conocerán antes que nadie.
+  - bf_id: home.waitlist.eyebrow
+    kind: copy
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.eyebrow
+    locales: [es, en]
+    publication_target: github_content
+    sample: Lista de espera
+  - bf_id: home.waitlist.heading
+    kind: style_target
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Anótate en la lista de espera de Bin Hive.
+  - bf_id: home.waitlist.subheading
+    kind: copy
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.subheading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Abriremos lugares por tandas. Déjanos tus datos y te escribimos cuando sea tu turno.
+  - bf_id: home.waitlist.name_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.name_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Nombre
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.name_placeholder
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.name_placeholder
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cómo te llamas
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.waitlist.email_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.email_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Correo electrónico
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.email_placeholder
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.email_placeholder
+    locales: [es, en]
+    publication_target: github_content
+    sample: tu@correo.com
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.waitlist.profile_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.profile_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¿Cómo usarías Bin Hive?
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.profile_creator_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.profile_creator_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Creador o marca personal
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.profile_agency_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.profile_agency_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Agencia o equipo con varios clientes
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.consent_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.consent_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Acepto recibir correos sobre Bin Hive y el aviso de privacidad.
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.privacy_link_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.privacy_link_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Leer el aviso de privacidad
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.privacy_link_href
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.privacy_link_href
+    locales: [es, en]
+    publication_target: github_content
+    sample: /privacidad/
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.waitlist.submit_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.submit_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Unirme a la lista de espera
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.waitlist.submitting_label
+    kind: chrome_denied
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.submitting_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Enviando…
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: home.waitlist.success_heading
+    kind: copy
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.success_heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: ¡Listo, ya estás en la colmena!
+  - bf_id: home.waitlist.success_body
+    kind: copy
+    area: home
+    section: waitlist
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#waitlist.success_body
+    locales: [es, en]
+    publication_target: github_content
+    sample: Revisa tu correo para confirmar tu lugar. Si no lo ves, busca en promociones o spam.
+  - bf_id: shared.footer.tagline
+    kind: copy
+    area: shared
+    section: footer
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#footer.tagline
+    locales: [es, en]
+    publication_target: github_content
+    sample: "Bin Hive: agentes de IA para redes sociales, organizados como una colmena."
+  - bf_id: shared.footer.credit
+    kind: copy
+    area: shared
+    section: footer
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#footer.credit
+    locales: [es, en]
+    publication_target: github_content
+    sample: Un proyecto de Arrobabeto Media, hecho en México.
+  - bf_id: shared.footer.privacy_label
+    kind: chrome_denied
+    area: shared
+    section: footer
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#footer.privacy_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Aviso de privacidad
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.footer.privacy_href
+    kind: chrome_denied
+    area: shared
+    section: footer
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#footer.privacy_href
+    locales: [es, en]
+    publication_target: github_content
+    sample: /privacidad/
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.footer.social_heading
+    kind: copy
+    area: shared
+    section: footer
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#footer.social_heading
+    locales: [es, en]
+    publication_target: github_content
+    sample: Síguenos
+  - bf_id: shared.footer.lang_label
+    kind: chrome_denied
+    area: shared
+    section: footer
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#footer.lang_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: English
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text

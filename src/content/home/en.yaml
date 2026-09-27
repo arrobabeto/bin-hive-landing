@@ -1,0 +1,310 @@
+# Bin Hive landing — English copy (locale "/en/").
+# Single source of truth for BSI (binflow/surface-inventory.yaml).
+# List `id`s are stable and identical to es.yaml; never rename a shipped id
+# (it is part of the bf_id). See docs/BSI.md.
+
+meta:
+  title: "AI agents for social media, with a purpose | Bin Hive"
+  description: "AI agents for social media: Bin Hive turns one idea into hooks, scripts and captions for Instagram, TikTok, YouTube Shorts and X. Join the waitlist."
+  og_image_alt: "Bin Hive: a hive of AI agents for social media, with cells for Instagram, TikTok, YouTube Shorts and X"
+
+nav:
+  skip_label: "Skip to content"
+  home_aria_label: "Bin Hive, home"
+  links:
+    - id: how
+      label: "How it works"
+      href: "#how-it-works"
+    - id: hives
+      label: "Hives"
+      href: "#hives"
+    - id: audiences
+      label: "Who it's for"
+      href: "#who-its-for"
+    - id: faq
+      label: "FAQ"
+      href: "#faq"
+  menu_aria_label: "Page sections"
+  cta_label: "Join the waitlist"
+  cta_href: "#waitlist"
+  lang_label: "ES"
+  lang_aria_label: "Leer esta página en español"
+
+hero:
+  eyebrow: "AI apiary · Release coming soon"
+  heading: "AI agents for social media, organized like a hive."
+  subheading: "Bin Hive turns a loose idea into ideas, hooks, scripts and captions ready for your approval. One hive per network, and a clear goal behind every piece."
+  body: "Stop posting just to post. You bring the idea and the judgment; the hive brings the craft of each network."
+  email_label: "Your email"
+  email_placeholder: "you@email.com"
+  submit_label: "Get early access"
+  secondary_cta_label: "See how it works"
+  secondary_cta_href: "#how-it-works"
+  microcopy: "No spam. We'll only write when we open spots."
+  visual_alt: "Honeycomb with four active cells: Instagram, TikTok, YouTube Shorts and X"
+
+problem:
+  eyebrow: "The problem"
+  heading: "Posting every day without direction is exhausting. And it shows."
+  intro: "You have ideas, but turning them into content that works on every network is a second job. And once generic AI joins in, everything starts to sound the same."
+  items:
+    - id: generic
+      title: "Generic content"
+      description: "The same text pasted into four networks works on none. Each platform rewards a different length, hook and ending."
+    - id: repeat
+      title: "Recycled ideas"
+      description: "Without memory, you pitch what you already posted two months ago, just in different words."
+    - id: purpose
+      title: "Pieces without a goal"
+      description: "If you don't know why a video exists, you can't know whether it worked."
+    - id: feedback
+      title: "Metrics nobody reads"
+      description: "The numbers live in a CSV and never make it back into the next idea."
+
+whatis:
+  eyebrow: "What is Bin Hive"
+  heading: "An apiary of AI agents with a single purpose: your content."
+  body: "Bin Hive organizes its agents like a real hive. Each one has a craft, each network has its own team, and everything goes through you before it ships. It's not a chat that improvises: it's a system with roles, memory and quality control."
+  roles:
+    - id: beekeeper
+      name: "Beekeeper"
+      role: "Your single entry point"
+      description: "Hand it an idea, a draft or a half-written script. It decides which hives and agents your request needs."
+    - id: hive
+      name: "Hives"
+      role: "One team per network"
+      description: "Instagram, TikTok, YouTube Shorts and X each get their own team, tuned to what works on that platform."
+    - id: queen
+      name: "Queen"
+      role: "Each hive's rules"
+      description: "Holds the defaults for her network and assembles the right team for every request."
+    - id: workers
+      name: "Workers"
+      role: "Specialists"
+      description: "Ideas, hooks, scripts, captions and testing. Only the ones your request needs get to work."
+
+how:
+  eyebrow: "How it works"
+  heading: "How Bin Hive's AI agents work, in six steps."
+  intro: "From a loose idea to a piece ready to record or post. No endless forms, and no starting from scratch every time."
+  steps:
+    - id: ask
+      title: "Ask from wherever you are"
+      description: "A topic, a one-liner, a draft, a final script or an old piece to recycle. The hive starts from there."
+    - id: interview
+      title: "It only asks what's missing"
+      description: "If something is unclear, it asks up to 4 questions per round. If you already said it, it won't ask again."
+    - id: work
+      title: "The hive works in parallel"
+      description: "Each worker does its part alongside the others whenever the work allows it."
+    - id: review
+      title: "Automatic review"
+      description: "A taster tests the piece against the network's rules, and the guardians protect your tone and your facts. Up to 2 correction rounds."
+    - id: approve
+      title: "You approve"
+      description: "Pick the idea, tweak what you want and decide what goes live. Nothing ships without your OK."
+    - id: learn
+      title: "Memory learns"
+      description: "What you approved, what you rejected and your metrics feed the next request."
+
+hives:
+  eyebrow: "Hives by network"
+  heading: "A native hive for every social network."
+  intro: "Generic agents produce generic content. That's why every network gets its own team, with its own length, hook style and call to action."
+  items:
+    - id: instagram
+      title: "Instagram"
+      tagline: "30-second Reels"
+      description: "A hook in the first 3 seconds, a looping ending and a call to save. Built for daily discovery and trust."
+    - id: tiktok
+      title: "TikTok"
+      tagline: "Result first"
+      description: "Opens with the result, says the keyword out loud and captions everything, because many people watch muted."
+    - id: youtube
+      title: "YouTube Shorts"
+      tagline: "2-second hook"
+      description: "Straight to the point, with a bridge to your long-form videos and subscribing as the next step."
+    - id: x
+      title: "X"
+      tagline: "Opinions backed by data"
+      description: "Clear takes, concrete numbers and a question that invites replies. Made for positioning and conversation."
+
+workers:
+  eyebrow: "The workers"
+  heading: "AI specialists that work like an editorial team."
+  intro: "Every hive has five workers. Above them, seven shared services take care of strategy, trends, metrics and your brand."
+  items:
+    - id: ideadora
+      name: "Ideator"
+      role: "Ideas"
+      description: "Pitches ideas aligned with your content pillars and drops the ones you already used."
+    - id: aguijon
+      name: "Stinger"
+      role: "Hooks"
+      description: "Writes and ranks the opening seconds, where the audience is won or lost."
+    - id: guionista
+      name: "Scriptwriter"
+      role: "Scripts"
+      description: "Turns the chosen idea into a script with the pace and length of the network."
+    - id: pluma
+      name: "Quill"
+      role: "Captions"
+      description: "Caption, hashtags and call to action, without AI-sounding filler."
+    - id: catadora
+      name: "Taster"
+      role: "Testing"
+      description: "Checks the network specs and simulates how your audience would react."
+  services_heading: "Shared apiary services"
+  services:
+    - id: arquitecta
+      name: "Architect"
+      description: "Editorial strategy and a weekly plan."
+    - id: exploradora
+      name: "Scout"
+      description: "Trend radar with cited sources."
+    - id: danzante
+      name: "Dancer"
+      description: "Reads your metrics and finds what works."
+    - id: cronista
+      name: "Chronicler"
+      description: "Build-in-public and process stories."
+    - id: guardiana_marca
+      name: "Brand guardian"
+      description: "Protects your voice and tone in every piece."
+    - id: guardiana_tecnica
+      name: "Tech guardian"
+      description: "Fact-checks before you say it."
+
+benefits:
+  eyebrow: "Why Bin Hive"
+  heading: "More content with intent, less filler."
+  items:
+    - id: native
+      title: "Native per network, not adapted"
+      description: "Each hive writes for its platform from the start instead of trimming one generic text."
+    - id: goal
+      title: "Every piece has a why"
+      description: "Positioning, trust or leads: the goal is declared before writing and measured afterwards."
+    - id: memory
+      title: "It doesn't repeat itself"
+      description: "It checks memory before and after generating, so it never pitches the same thing twice."
+    - id: quality
+      title: "Built-in quality control"
+      description: "The writer and the reviewer don't share context, which keeps the review honest."
+    - id: tuning
+      title: "Tuned in plain language"
+      description: "Say “I want spicier hooks on TikTok” and the hive adjusts its own settings."
+    - id: control
+      title: "You have the final say"
+      description: "Bin Hive proposes, you decide. Nothing is published automatically."
+
+audiences:
+  eyebrow: "Who it's for"
+  heading: "Built for creators and for agencies running many brands."
+  items:
+    - id: creators
+      title: "Creators and personal brands"
+      description: "For people who want to post consistently without losing their voice or their editorial direction."
+      points:
+        - id: daily
+          text: "Keep a daily cadence with a small team."
+        - id: voice
+          text: "Your tone and your pillars, always present."
+        - id: metrics
+          text: "Your metrics flow back into the next idea."
+      cta_label: "I'm a creator, count me in"
+    - id: agencies
+      title: "Agencies and social media teams"
+      description: "Bring content creation and planning for every client into one place."
+      points:
+        - id: profiles
+          text: "One profile per client, managed under your agency account."
+        - id: voices
+          text: "Each profile with its own voice, goals and hives."
+        - id: planning
+          text: "Planning and approvals for every account on a single board."
+      cta_label: "I'm an agency, count me in"
+
+numbers:
+  eyebrow: "The hive in numbers"
+  heading: "An agent system with real structure."
+  items:
+    - id: agents
+      value: "27"
+      caption: "specialized agents"
+    - id: hives
+      value: "4"
+      caption: "hives, one per network"
+    - id: memory
+      value: "90 days"
+      caption: "of memory without repeating ideas"
+    - id: questions
+      value: "≤4"
+      caption: "questions per round, only when something is missing"
+
+trust:
+  eyebrow: "Control"
+  heading: "AI proposes. You decide what goes live."
+  body: "Bin Hive was born to produce @arrobabeto's content every single day. That's why it's built to work with you, not instead of you."
+  items:
+    - id: approve
+      text: "You approve every piece before it's published."
+    - id: no_autopublish
+      text: "It never posts to your networks on its own."
+    - id: no_invent
+      text: "It never makes up product facts: it flags what's missing so you can confirm it."
+    - id: isolated
+      text: "The writer and the reviewer work with separate contexts."
+
+faq:
+  eyebrow: "FAQ"
+  heading: "Frequently asked questions about Bin Hive."
+  items:
+    - id: what
+      question: "What is Bin Hive?"
+      answer: "Bin Hive is an apiary of AI agents for social media. It turns one idea into ideas, hooks, scripts and captions for Instagram, TikTok, YouTube Shorts and X, with a specialized hive for each network."
+    - id: publish
+      question: "Does it post for me?"
+      answer: "No. Bin Hive prepares the pieces and you decide what gets recorded and published. Publishing is manual on purpose."
+    - id: generic
+      question: "Will the content sound like AI?"
+      answer: "Every piece goes through a tone review with a list of banned phrases typical of AI-generated text. On top of that, you edit and approve everything before it goes live."
+    - id: agencies
+      question: "Does it work for an agency with many clients?"
+      answer: "Yes. Your agency account groups one profile per client, each with its own voice, goals and hives, and you plan everything from one place."
+    - id: networks
+      question: "Which social networks does it support?"
+      answer: "Instagram (Reels), TikTok, YouTube Shorts and X. Each has its own hive, and more networks can be added later."
+    - id: release
+      question: "When can I use it?"
+      answer: "We're preparing the release. Join the waitlist and you'll be the first to know when we open spots."
+    - id: price
+      question: "How much does it cost?"
+      answer: "Plans will be announced with the release. People on the waitlist will see them before anyone else."
+
+waitlist:
+  eyebrow: "Waitlist"
+  heading: "Join the Bin Hive waitlist."
+  subheading: "We'll open spots in batches. Leave your details and we'll write when it's your turn."
+  name_label: "Name"
+  name_placeholder: "What should we call you?"
+  email_label: "Email"
+  email_placeholder: "you@email.com"
+  profile_label: "How would you use Bin Hive?"
+  profile_creator_label: "Creator or personal brand"
+  profile_agency_label: "Agency or team with multiple clients"
+  consent_label: "I agree to receive emails about Bin Hive and accept the privacy notice."
+  privacy_link_label: "Read the privacy notice"
+  privacy_link_href: "/en/privacy/"
+  submit_label: "Join the waitlist"
+  submitting_label: "Sending…"
+  success_heading: "Done, you're in the hive!"
+  success_body: "Check your inbox to confirm your spot. If you can't find it, look in promotions or spam."
+
+footer:
+  tagline: "Bin Hive: AI agents for social media, organized like a hive."
+  credit: "An Arrobabeto Media project, made in Mexico."
+  privacy_label: "Privacy notice"
+  privacy_href: "/en/privacy/"
+  social_heading: "Follow along"
+  lang_label: "Español"

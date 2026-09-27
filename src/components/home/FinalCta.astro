@@ -1,0 +1,179 @@
+---
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+import type { Locale } from '../../lib/i18n';
+import { waitlistAction } from '../../lib/waitlist';
+
+interface Props {
+  lang: Locale;
+  content: HomeContent['waitlist'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { lang, content, anchor, index, total } = Astro.props;
+const action = waitlistAction();
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<section id={anchor} class="home-section home-wait home-honeycomb-dark" aria-labelledby={`${anchor}-h`} {...bf('home.waitlist.shell', 'container')}>
+  <div class="home-container home-wait__grid">
+    <div class="home-wait__copy">
+      <p class="home-eyebrow home-eyebrow--on-dark">
+        <span class="home-eyebrow__index" aria-hidden="true">{pad(index)}</span>
+        <span {...bf('home.waitlist.eyebrow', 'copy')}>{content.eyebrow}</span>
+        <span aria-hidden="true" style="opacity:.55">/{pad(total)}</span>
+      </p>
+      <h2 class="home-h2 home-wait__h" id={`${anchor}-h`} {...bf('home.waitlist.heading', 'style_target')}>{content.heading}</h2>
+      <p class="home-lead" {...bf('home.waitlist.subheading', 'copy')}>{content.subheading}</p>
+    </div>
+
+    <div class="home-wait__box home-card">
+      <form
+        class="home-wait__form"
+        method="post"
+        action={action}
+        data-waitlist-form
+        data-locale={lang}
+        data-success-panel={`${anchor}-success`}
+        data-submitting-label={content.submitting_label}
+      >
+        <div class="home-field">
+          <label class="home-label" for="wl-name" {...bf('home.waitlist.name_label', 'chrome_denied')}>{content.name_label}</label>
+          <input class="home-input" id="wl-name" name="fields[name]" type="text" autocomplete="given-name" placeholder={content.name_placeholder} required maxlength="80" />
+        </div>
+        <div class="home-field">
+          <label class="home-label" for="wl-email" {...bf('home.waitlist.email_label', 'chrome_denied')}>{content.email_label}</label>
+          <input class="home-input" id="wl-email" name="fields[email]" type="email" autocomplete="email" inputmode="email" placeholder={content.email_placeholder} required />
+        </div>
+        <fieldset class="home-wait__fieldset">
+          <legend class="home-label" {...bf('home.waitlist.profile_label', 'chrome_denied')}>{content.profile_label}</legend>
+          <label class="home-choice">
+            <input type="radio" name="fields[perfil]" value="creador" required checked />
+            <span {...bf('home.waitlist.profile_creator_label', 'chrome_denied')}>{content.profile_creator_label}</span>
+          </label>
+          <label class="home-choice">
+            <input type="radio" name="fields[perfil]" value="agencia" />
+            <span {...bf('home.waitlist.profile_agency_label', 'chrome_denied')}>{content.profile_agency_label}</span>
+          </label>
+        </fieldset>
+        <label class="home-wait__consent">
+          <input type="checkbox" name="consent" value="si" required />
+          <span {...bf('home.waitlist.consent_label', 'chrome_denied')}>{content.consent_label}</span>
+        </label>
+        <a class="home-link home-wait__privacy" href={content.privacy_link_href} {...bf('home.waitlist.privacy_link_label', 'chrome_denied')}>
+          {content.privacy_link_label}
+        </a>
+
+        <input type="hidden" name="fields[idioma]" value={lang} />
+        <input type="hidden" name="ml-submit" value="1" />
+        <input type="hidden" name="anticsrf" value="true" />
+        <div class="home-hp" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <button class="home-btn home-btn--block" type="submit" {...bf('home.waitlist.submit_label', 'chrome_denied')}>
+          {content.submit_label}
+        </button>
+        <p class="home-status" data-waitlist-status role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="home-wait__success" id={`${anchor}-success`} tabindex="-1" hidden>
+        <span class="home-wait__check home-hex" aria-hidden="true">✓</span>
+        <p class="home-h3" {...bf('home.waitlist.success_heading', 'copy')}>{content.success_heading}</p>
+        <p class="home-text" {...bf('home.waitlist.success_body', 'copy')}>{content.success_body}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-wait {
+    background-color: var(--bh-ink);
+    color: var(--bh-paper);
+  }
+  .home-wait__grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .home-wait__copy {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .home-wait__copy .home-eyebrow {
+    margin: 0;
+  }
+  .home-wait__h {
+    font-size: var(--bh-text-hero);
+    max-width: 14ch;
+    color: var(--bh-honey);
+  }
+  .home-wait__box {
+    color: var(--bh-ink);
+    background: var(--bh-paper);
+    box-shadow: 10px 10px 0 var(--bh-honey);
+    padding: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+  }
+  .home-wait__form {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .home-wait__fieldset {
+    display: grid;
+    gap: 0.625rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .home-wait__fieldset legend {
+    margin-bottom: 0.5rem;
+    padding: 0;
+  }
+  .home-wait__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--bh-text-sm);
+    cursor: pointer;
+  }
+  .home-wait__consent input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.125rem 0 0;
+    flex: none;
+    accent-color: var(--bh-ink);
+  }
+  .home-wait__privacy {
+    justify-self: start;
+    margin-top: -0.5rem;
+    font-size: var(--bh-text-sm);
+  }
+  .home-wait__success {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+  }
+  .home-wait__success[hidden] {
+    display: none;
+  }
+  .home-wait__check {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 4rem;
+    background: var(--bh-honey);
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+  @media (min-width: 64rem) {
+    .home-wait__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+    .home-wait__copy {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+</style>

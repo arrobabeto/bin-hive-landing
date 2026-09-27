@@ -1,0 +1,165 @@
+---
+import Logo from '../ui/Logo.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  lang: Locale;
+  nav: HomeContent['nav'];
+  anchorBase?: string;
+}
+
+const { lang, nav, anchorBase = '' } = Astro.props;
+const homeHref = localizedPath('/', lang);
+const otherLocale: Locale = lang === 'es' ? 'en' : 'es';
+const otherHref = localizedPath(Astro.url.pathname, otherLocale);
+const href = (anchor: string) => `${anchorBase}${anchor}`;
+---
+
+<header class="site-header" {...bf('shared.nav.shell', 'container')}>
+  <div class="home-container site-header__inner">
+    <a class="site-header__brand" href={homeHref} aria-label={nav.home_aria_label}>
+      <Logo size={36} />
+    </a>
+
+    <nav class="site-header__nav" aria-label={nav.menu_aria_label}>
+      <ul class="site-header__links">
+        {
+          nav.links.map((link) => (
+            <li>
+              <a class="site-header__link" href={href(link.href)} {...bf(`shared.nav.${link.id}_label`, 'chrome_denied')}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a
+        class="site-header__lang"
+        href={otherHref}
+        hreflang={otherLocale === 'es' ? 'es-MX' : 'en'}
+        lang={otherLocale === 'es' ? 'es-MX' : 'en'}
+        aria-label={nav.lang_aria_label}
+        {...bf('shared.nav.lang_label', 'chrome_denied')}
+      >
+        {nav.lang_label}
+      </a>
+      <a class="home-btn site-header__cta" href={href(nav.cta_href)} {...bf('shared.nav.cta_label', 'chrome_denied')}>
+        {nav.cta_label}
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bh-paper);
+    border-bottom: var(--bh-border) solid var(--bh-ink);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 4.5rem;
+    column-gap: 0.75rem;
+  }
+  .site-header__brand {
+    display: inline-flex;
+    color: var(--bh-ink);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .site-header__inner {
+    flex-wrap: wrap;
+  }
+  .site-header__nav {
+    order: 3;
+    flex: 1 0 100%;
+    margin-inline: calc(var(--bh-gutter) * -1);
+    border-top: var(--bh-border-thin) solid var(--bh-ink);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .site-header__nav::-webkit-scrollbar {
+    display: none;
+  }
+  .site-header__links {
+    display: flex;
+    margin: 0;
+    padding: 0 calc(var(--bh-gutter) - 0.75rem);
+    list-style: none;
+  }
+  .site-header__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--bh-ink);
+    font-size: var(--bh-text-sm);
+    font-stretch: 112%;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .site-header__link:hover {
+    background: var(--bh-ink);
+    color: var(--bh-honey);
+  }
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .site-header__lang {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border: var(--bh-border) solid var(--bh-ink);
+    color: var(--bh-ink);
+    font-family: var(--bh-font-mono);
+    font-size: var(--bh-text-sm);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .site-header__lang:hover {
+    background: var(--bh-ink);
+    color: var(--bh-honey);
+  }
+  .site-header__cta {
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--bh-text-xs);
+  }
+
+  @media (min-width: 40rem) {
+    .site-header__cta {
+      padding-inline: 1.125rem;
+      font-size: var(--bh-text-sm);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .site-header__inner {
+      flex-wrap: nowrap;
+    }
+    .site-header__nav {
+      order: 0;
+      flex: 0 1 auto;
+      margin: 0;
+      border: 0;
+    }
+    .site-header__links {
+      padding: 0;
+    }
+  }
+</style>
+

@@ -1,0 +1,109 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['faq'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-faq" aria-labelledby={`${anchor}-h`} {...bf('home.faq.shell', 'container')}>
+  <div class="home-container home-faq__grid">
+    <SectionHeader section="faq" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} align="start" />
+    <div class="home-faq__list">
+      {
+        content.items.map((item, i) => (
+          <details class="home-faq__item" open={i === 0}>
+            <summary class="home-faq__summary">
+              <h3 class="home-faq__q" {...bf(`home.faq.${item.id}_question`, 'copy')}>{item.question}</h3>
+              <span class="home-faq__icon home-hex" aria-hidden="true" />
+            </summary>
+            <p class="home-text home-faq__a" {...bf(`home.faq.${item.id}_answer`, 'copy')}>{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-faq__grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .home-faq__list {
+    border: var(--bh-border) solid var(--bh-ink);
+    background: var(--bh-white);
+    box-shadow: var(--bh-shadow);
+  }
+  .home-faq__item + .home-faq__item {
+    border-top: var(--bh-border) solid var(--bh-ink);
+  }
+  .home-faq__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding: 1.125rem 1.25rem;
+    list-style: none;
+    cursor: pointer;
+  }
+  .home-faq__summary::-webkit-details-marker {
+    display: none;
+  }
+  .home-faq__summary:hover {
+    background: var(--bh-wax);
+  }
+  .home-faq__item[open] .home-faq__summary {
+    background: var(--bh-honey);
+  }
+  .home-faq__q {
+    margin: 0;
+    font-size: var(--bh-text-lg);
+    font-stretch: 112%;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .home-faq__icon {
+    flex: none;
+    position: relative;
+    width: 1.75rem;
+    height: 2rem;
+    background: var(--bh-ink);
+  }
+  .home-faq__icon::before,
+  .home-faq__icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.75rem;
+    height: 3px;
+    background: var(--bh-honey);
+    transform: translate(-50%, -50%);
+    transition: transform var(--bh-fast) var(--bh-ease);
+  }
+  .home-faq__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .home-faq__item[open] .home-faq__icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .home-faq__a {
+    padding: 0 1.25rem 1.5rem;
+    padding-top: 1rem;
+  }
+  @media (min-width: 64rem) {
+    .home-faq__grid {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+</style>

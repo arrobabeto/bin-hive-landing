@@ -1,0 +1,158 @@
+---
+import Honeycomb from '../ui/Honeycomb.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+import type { Locale } from '../../lib/i18n';
+import { waitlistAction } from '../../lib/waitlist';
+
+interface Props {
+  lang: Locale;
+  hero: HomeContent['hero'];
+  hives: HomeContent['hives']['items'];
+  tickerWords: string[];
+  successMessage: string;
+  submittingLabel: string;
+}
+
+const { lang, hero, hives, tickerWords, successMessage, submittingLabel } = Astro.props;
+const action = waitlistAction();
+---
+
+<section class="home-hero home-honeycomb" aria-labelledby="hero-heading" {...bf('home.hero.shell', 'container')}>
+  <div class="home-container home-hero__grid">
+    <div class="home-hero__copy">
+      <p class="home-eyebrow">
+        <span class="home-eyebrow__index" aria-hidden="true">BH</span>
+        <span {...bf('home.hero.eyebrow', 'copy')}>{hero.eyebrow}</span>
+      </p>
+      <h1 class="home-h1" id="hero-heading" {...bf('home.hero.heading', 'style_target')}>{hero.heading}</h1>
+      <p class="home-lead home-hero__sub" {...bf('home.hero.subheading', 'copy')}>{hero.subheading}</p>
+      <p class="home-text home-hero__body" {...bf('home.hero.body', 'copy')}>{hero.body}</p>
+
+      <form
+        class="home-hero__form home-card"
+        method="post"
+        action={action}
+        data-waitlist-form
+        data-locale={lang}
+        data-submitting-label={submittingLabel}
+        data-success-message={successMessage}
+      >
+        <div class="home-field home-hero__field">
+          <label class="home-label" for="hero-email" {...bf('home.hero.email_label', 'chrome_denied')}>{hero.email_label}</label>
+          <div class="home-hero__row">
+            <input
+              class="home-input"
+              id="hero-email"
+              name="fields[email]"
+              type="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder={hero.email_placeholder}
+              required
+            />
+            <button class="home-btn home-btn--ink" type="submit" {...bf('home.hero.submit_label', 'chrome_denied')}>
+              {hero.submit_label}
+            </button>
+          </div>
+        </div>
+        <input type="hidden" name="fields[idioma]" value={lang} />
+        <input type="hidden" name="ml-submit" value="1" />
+        <input type="hidden" name="anticsrf" value="true" />
+        <div class="home-hp" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <p class="home-status" data-waitlist-status role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="home-hero__meta">
+        <p class="home-mono home-hero__micro" {...bf('home.hero.microcopy', 'copy')}>{hero.microcopy}</p>
+        <a class="home-link" href={hero.secondary_cta_href} {...bf('home.hero.secondary_cta_label', 'chrome_denied')}>
+          {hero.secondary_cta_label} ↓
+        </a>
+      </div>
+    </div>
+
+    <div class="home-hero__visual">
+      <Honeycomb label={hero.visual_alt} hives={hives} />
+    </div>
+  </div>
+
+  <div class="home-ticker" aria-hidden="true">
+    {
+      [0, 1].map(() => (
+        <div class="home-ticker__track">
+          {tickerWords.map((word) => (
+            <span>⬢ {word}</span>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .home-hero {
+    padding-top: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+    background-color: var(--bh-paper);
+  }
+  .home-hero__grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    padding-bottom: clamp(3rem, 2rem + 4vw, 5rem);
+  }
+  .home-hero__copy {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+  .home-hero__copy > .home-eyebrow {
+    margin: 0;
+  }
+  .home-hero__sub {
+    font-weight: 600;
+  }
+  .home-hero__body {
+    padding-left: 1rem;
+    border-left: 6px solid var(--bh-honey);
+  }
+  .home-hero__form {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: var(--bh-honey);
+  }
+  .home-hero__row {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .home-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+  }
+  .home-hero__micro {
+    margin: 0;
+    font-size: var(--bh-text-sm);
+    color: var(--bh-ink-soft);
+  }
+  .home-hero__visual {
+    max-width: 34rem;
+    width: 100%;
+    justify-self: center;
+  }
+  @media (min-width: 40rem) {
+    .home-hero__row {
+      grid-template-columns: 1fr auto;
+    }
+  }
+  @media (min-width: 64rem) {
+    .home-hero__grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+  }
+</style>

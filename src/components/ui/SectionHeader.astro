@@ -1,0 +1,66 @@
+---
+import { bf } from '../../lib/bsi';
+
+interface Props {
+  /** YAML section key (also the BSI section token). */
+  section: string;
+  index: number;
+  total: number;
+  eyebrow: string;
+  heading: string;
+  headingId: string;
+  intro?: string;
+  /** YAML field that holds `intro` (intro | body | subheading). */
+  introField?: string;
+  onDark?: boolean;
+  align?: 'start' | 'split';
+}
+
+const {
+  section,
+  index,
+  total,
+  eyebrow,
+  heading,
+  headingId,
+  intro,
+  introField = 'intro',
+  onDark = false,
+  align = 'split',
+} = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<div class:list={['home-sechead', align === 'split' && 'home-sechead--split']} data-reveal>
+  <div>
+    <p class:list={['home-eyebrow', onDark && 'home-eyebrow--on-dark']}>
+      <span class="home-eyebrow__index" aria-hidden="true">{pad(index)}</span>
+      <span {...bf(`home.${section}.eyebrow`, 'copy')}>{eyebrow}</span>
+      <span class="home-sechead__total" aria-hidden="true">/{pad(total)}</span>
+    </p>
+    <h2 class="home-h2" id={headingId} {...bf(`home.${section}.heading`, 'style_target')}>{heading}</h2>
+  </div>
+  {intro && <p class="home-lead home-sechead__intro" {...bf(`home.${section}.${introField}`, 'copy')}>{intro}</p>}
+</div>
+
+<style>
+  .home-sechead {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+  }
+  .home-sechead__total {
+    opacity: 0.55;
+  }
+  @media (min-width: 64rem) {
+    .home-sechead--split {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      align-items: end;
+      gap: 3rem;
+    }
+    .home-sechead--split .home-sechead__intro {
+      padding-left: 1.5rem;
+      border-left: var(--bh-border) solid currentColor;
+    }
+  }
+</style>

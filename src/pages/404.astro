@@ -1,0 +1,40 @@
+---
+import { getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const home = await getEntry('home', 'es');
+if (!home) throw new Error('Missing es content');
+---
+
+<Layout
+  lang="es"
+  title="Página no encontrada"
+  description="Esta celda del panal está vacía. Regresa a Bin Hive para conocer los agentes de IA para redes sociales."
+  content={home.data}
+  anchorBase="/"
+  noindex
+  alternateLocales={false}
+>
+  <section class="home-container home-404 home-honeycomb">
+    <p class="home-eyebrow"><span class="home-eyebrow__index" aria-hidden="true">404</span><span>Celda vacía · Empty cell</span></p>
+    <h1 class="home-h1">Esta celda está vacía.</h1>
+    <p class="home-lead">La página que buscas no existe o cambió de lugar. / This page doesn't exist.</p>
+    <div class="home-404__actions">
+      <a class="home-btn" href="/">Ir al inicio</a>
+      <a class="home-btn home-btn--ghost" href="/en/" lang="en" hreflang="en">Go to the English site</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .home-404 {
+    display: grid;
+    gap: 1.5rem;
+    padding-block: var(--bh-section-y);
+  }
+  .home-404__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

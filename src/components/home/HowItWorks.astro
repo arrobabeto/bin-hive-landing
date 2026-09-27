@@ -1,0 +1,74 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['how'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-how home-honeycomb-dark" aria-labelledby={`${anchor}-h`} {...bf('home.how.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="how" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} intro={content.intro} onDark />
+    <ol class="home-how__steps">
+      {
+        content.steps.map((step, i) => (
+          <li class="home-how__step" data-reveal>
+            <span class="home-how__num home-hex" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="home-h3" {...bf(`home.how.${step.id}_title`, 'copy')}>{step.title}</h3>
+            <p class="home-text" {...bf(`home.how.${step.id}_description`, 'copy')}>{step.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .home-how {
+    background-color: var(--bh-ink);
+    color: var(--bh-paper);
+  }
+  .home-how__steps {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  .home-how__step {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+    padding: 1.75rem 0;
+    border-top: var(--bh-border) solid var(--bh-honey);
+  }
+  .home-how__num {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 4rem;
+    background: var(--bh-honey);
+    color: var(--bh-ink);
+    font-family: var(--bh-font-mono);
+    font-weight: 800;
+  }
+  @media (min-width: 48rem) {
+    .home-how__steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .home-how__steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 2.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,20 @@
+# Bin Hive
+
+> Bin Hive is an apiary of AI agents for social media content, by Arrobabeto Media (Mexico). It turns a loose idea into ideas, hooks, scripts and captions for Instagram (Reels), TikTok, YouTube Shorts and X, with one specialized "hive" (team of agents) per network. It is currently pre-release; there is a public waitlist.
+
+Key facts:
+
+- 27 specialized agents: 4 network hives × 5 workers (Ideator, Stinger/hooks, Scriptwriter, Quill/captions, Taster/testing) plus 7 shared services (strategy, trends, metrics, build-in-public stories, brand guardian, tech guardian, docs).
+- Single entry point (the "Beekeeper"): a request can start from a topic, a one-liner, a draft, a final script or an old piece to recycle.
+- Asks at most 4 questions per round, only for missing context. Up to 2 automatic correction rounds.
+- 90-day memory to avoid repeating ideas; metrics feed the next request.
+- Human in control: the user approves every piece. Bin Hive never publishes to social networks on its own and never makes up product facts.
+- For creators/personal brands and for agencies (one profile per client under an agency account, with separate voice, goals and hives).
+- Pricing: not announced; plans will be shared with the release.
+
+## Pages
+
+- [Bin Hive — Español](https://binhive.arrobabeto.com/): Agentes de IA para redes sociales (landing y lista de espera).
+- [Bin Hive — English](https://binhive.arrobabeto.com/en/): AI agents for social media (landing and waitlist).
+- [Aviso de privacidad](https://binhive.arrobabeto.com/privacidad/)
+- [Privacy notice](https://binhive.arrobabeto.com/en/privacy/)

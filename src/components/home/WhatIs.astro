@@ -1,0 +1,101 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['whatis'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-whatis" aria-labelledby={`${anchor}-h`} {...bf('home.whatis.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="whatis" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} intro={content.body} introField="body" />
+    <ol class="home-whatis__roles">
+      {
+        content.roles.map((role, i) => (
+          <li class="home-whatis__role" data-reveal>
+            <span class="home-whatis__hex home-hex" aria-hidden="true">{i + 1}</span>
+            <div class="home-whatis__text">
+              <h3 class="home-h3" {...bf(`home.whatis.${role.id}_name`, 'copy')}>{role.name}</h3>
+              <p class="home-whatis__role-label home-mono" {...bf(`home.whatis.${role.id}_role`, 'copy')}>{role.role}</p>
+              <p class="home-text" {...bf(`home.whatis.${role.id}_description`, 'copy')}>{role.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .home-whatis__roles {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: var(--bh-border) solid var(--bh-ink);
+    background: var(--bh-white);
+    box-shadow: var(--bh-shadow-lg);
+  }
+  .home-whatis__role {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border-top: var(--bh-border) solid var(--bh-ink);
+  }
+  .home-whatis__role:first-child {
+    border-top: 0;
+  }
+  .home-whatis__hex {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 4rem;
+    background: var(--bh-ink);
+    color: var(--bh-honey);
+    font-stretch: 125%;
+    font-weight: 900;
+    font-size: 1.5rem;
+  }
+  .home-whatis__text {
+    display: grid;
+    gap: 0.375rem;
+  }
+  .home-whatis__role-label {
+    margin: 0;
+    font-size: var(--bh-text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--bh-ink-soft);
+  }
+  @media (min-width: 48rem) {
+    .home-whatis__roles {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .home-whatis__role:nth-child(2) {
+      border-top: 0;
+    }
+    .home-whatis__role:nth-child(even) {
+      border-left: var(--bh-border) solid var(--bh-ink);
+    }
+  }
+  @media (min-width: 64rem) {
+    .home-whatis__roles {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .home-whatis__role {
+      grid-template-columns: 1fr;
+      border-top: 0;
+      border-left: var(--bh-border) solid var(--bh-ink);
+    }
+    .home-whatis__role:first-child {
+      border-left: 0;
+    }
+  }
+</style>

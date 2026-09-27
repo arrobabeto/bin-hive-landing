@@ -1,0 +1,92 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['benefits'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-benefits" aria-labelledby={`${anchor}-h`} {...bf('home.benefits.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="benefits" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} align="start" />
+    <ul class="home-benefits__grid">
+      {
+        content.items.map((item, i) => (
+          <li class="home-benefits__item" data-reveal>
+            <span class="home-benefits__index home-mono" aria-hidden="true">+{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="home-h3" {...bf(`home.benefits.${item.id}_title`, 'copy')}>{item.title}</h3>
+            <p class="home-text" {...bf(`home.benefits.${item.id}_description`, 'copy')}>{item.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .home-benefits {
+    background: var(--bh-honey);
+  }
+  .home-benefits__grid {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: var(--bh-border) solid var(--bh-ink);
+    background: var(--bh-paper);
+    box-shadow: var(--bh-shadow-lg);
+  }
+  .home-benefits__item {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+    padding: 1.75rem;
+    border-bottom: var(--bh-border) solid var(--bh-ink);
+    transition: background-color var(--bh-fast) var(--bh-ease);
+  }
+  .home-benefits__item:last-child {
+    border-bottom: 0;
+  }
+  .home-benefits__item:hover {
+    background: var(--bh-wax);
+  }
+  .home-benefits__index {
+    font-weight: 800;
+    font-size: var(--bh-text-sm);
+  }
+  @media (min-width: 48rem) {
+    .home-benefits__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .home-benefits__item:nth-child(odd) {
+      border-right: var(--bh-border) solid var(--bh-ink);
+    }
+    .home-benefits__item:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+  }
+  @media (min-width: 64rem) {
+    .home-benefits__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .home-benefits__item {
+      border-right: var(--bh-border) solid var(--bh-ink);
+      border-bottom: var(--bh-border) solid var(--bh-ink);
+    }
+    .home-benefits__item:nth-child(odd) {
+      border-right: var(--bh-border) solid var(--bh-ink);
+    }
+    .home-benefits__item:nth-child(3n) {
+      border-right: 0;
+    }
+    .home-benefits__item:nth-last-child(-n + 3) {
+      border-bottom: 0;
+    }
+  }
+</style>

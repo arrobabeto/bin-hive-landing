@@ -1,0 +1,86 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['audiences'];
+  anchor: string;
+  waitlistAnchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, waitlistAnchor, index, total } = Astro.props;
+const profileValue = { creators: 'creador', agencies: 'agencia' } as const;
+---
+
+<section id={anchor} class="home-section home-aud" aria-labelledby={`${anchor}-h`} {...bf('home.audiences.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="audiences" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} align="start" />
+    <div class="home-aud__grid">
+      {
+        content.items.map((item) => (
+          <article
+            class:list={['home-card', 'home-aud__card', item.id === 'agencies' && 'home-card--ink']}
+            aria-labelledby={`${anchor}-${item.id}`}
+            data-reveal
+          >
+            <h3 class="home-h3 home-aud__title" id={`${anchor}-${item.id}`} {...bf(`home.audiences.${item.id}_title`, 'copy')}>
+              {item.title}
+            </h3>
+            <p class="home-text" {...bf(`home.audiences.${item.id}_description`, 'copy')}>{item.description}</p>
+            <ul class="home-hexlist">
+              {item.points.map((point) => (
+                <li {...bf(`home.audiences.${item.id}_${point.id}_text`, 'copy')}>{point.text}</li>
+              ))}
+            </ul>
+            <a
+              class:list={['home-btn', 'home-btn--block', item.id === 'agencies' ? '' : 'home-btn--ink']}
+              href={`#${waitlistAnchor}`}
+              data-profile={profileValue[item.id]}
+              {...bf(`home.audiences.${item.id}_cta_label`, 'chrome_denied')}
+            >
+              {item.cta_label} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-aud__grid {
+    display: grid;
+    gap: 2rem;
+  }
+  .home-aud__card {
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+    padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+  .home-aud__card .home-btn {
+    margin-top: 0.5rem;
+    align-self: end;
+  }
+  .home-aud__title {
+    font-size: var(--bh-text-2xl);
+    font-stretch: 125%;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .home-card--ink .home-hexlist > li::before {
+    outline-color: var(--bh-honey);
+  }
+  .home-card--ink .home-btn {
+    border-color: var(--bh-honey);
+    box-shadow: 4px 4px 0 var(--bh-honey);
+  }
+  @media (min-width: 56rem) {
+    .home-aud__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+  }
+</style>

@@ -1,0 +1,141 @@
+---
+import Logo from '../ui/Logo.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+import { localizedPath, type Locale } from '../../lib/i18n';
+import { SOCIAL_LINKS } from '../../lib/site';
+
+interface Props {
+  lang: Locale;
+  footer: HomeContent['footer'];
+}
+
+const { lang, footer } = Astro.props;
+const otherLocale: Locale = lang === 'es' ? 'en' : 'es';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer home-honeycomb-dark" {...bf('shared.footer.shell', 'container')}>
+  <div class="home-container site-footer__grid">
+    <div class="site-footer__brand">
+      <a href={localizedPath('/', lang)} class="site-footer__logo" aria-label="Bin Hive">
+        <Logo size={44} inverted />
+      </a>
+      <p class="site-footer__tagline" {...bf('shared.footer.tagline', 'copy')}>{footer.tagline}</p>
+    </div>
+
+    <div>
+      <p class="site-footer__heading" {...bf('shared.footer.social_heading', 'copy')}>{footer.social_heading}</p>
+      <ul class="site-footer__list">
+        {
+          SOCIAL_LINKS.map((link) => (
+            <li>
+              <a class="site-footer__link" href={link.href} rel="me noopener" target="_blank">
+                {link.label} <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <ul class="site-footer__list">
+        <li>
+          <a class="site-footer__link" href={footer.privacy_href} {...bf('shared.footer.privacy_label', 'chrome_denied')}>
+            {footer.privacy_label}
+          </a>
+        </li>
+        <li>
+          <a
+            class="site-footer__link"
+            href={localizedPath(Astro.url.pathname, otherLocale)}
+            hreflang={otherLocale === 'es' ? 'es-MX' : 'en'}
+            lang={otherLocale === 'es' ? 'es-MX' : 'en'}
+            {...bf('shared.footer.lang_label', 'chrome_denied')}
+          >
+            {footer.lang_label}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="home-container site-footer__base">
+    <p {...bf('shared.footer.credit', 'copy')}>{footer.credit}</p>
+    <p class="home-mono">© {year} Bin Hive</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--bh-ink);
+    color: var(--bh-paper);
+    border-top: var(--bh-border) solid var(--bh-honey);
+    padding-top: clamp(3rem, 2rem + 4vw, 5rem);
+  }
+  .site-footer__grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  .site-footer__logo {
+    display: inline-flex;
+    text-decoration: none;
+  }
+  .site-footer__tagline {
+    max-width: 32ch;
+    margin: 1.25rem 0 0;
+    font-size: var(--bh-text-lg);
+    font-weight: 600;
+  }
+  .site-footer__heading {
+    margin: 0 0 0.75rem;
+    color: var(--bh-honey);
+    font-family: var(--bh-font-mono);
+    font-size: var(--bh-text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .site-footer__list {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-footer__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2.75rem;
+    color: var(--bh-paper);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .site-footer__link:hover {
+    color: var(--bh-honey);
+  }
+  .site-footer__link:focus-visible {
+    outline-color: var(--bh-honey);
+  }
+  .site-footer__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    margin-top: 3rem;
+    padding-block: 1.5rem;
+    border-top: var(--bh-border-thin) solid rgb(243 238 227 / 0.3);
+    font-size: var(--bh-text-sm);
+  }
+  .site-footer__base p {
+    margin: 0;
+  }
+  @media (min-width: 48rem) {
+    .site-footer__grid {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+</style>

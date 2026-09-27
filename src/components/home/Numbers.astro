@@ -1,0 +1,71 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['numbers'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-numbers home-honeycomb" aria-labelledby={`${anchor}-h`} {...bf('home.numbers.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="numbers" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} align="start" />
+    <dl class="home-numbers__grid">
+      {
+        content.items.map((item) => (
+          <div class="home-numbers__item" data-reveal>
+            <dt class="home-numbers__value home-hex" {...bf(`home.numbers.${item.id}_value`, 'copy')}>{item.value}</dt>
+            <dd class="home-numbers__caption" {...bf(`home.numbers.${item.id}_caption`, 'copy')}>{item.caption}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .home-numbers__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 1.5rem;
+    margin: 0;
+  }
+  .home-numbers__item {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .home-numbers__value {
+    display: grid;
+    place-items: center;
+    width: clamp(8rem, 6rem + 6vw, 11rem);
+    aspect-ratio: 0.866;
+    padding: 0.5rem;
+    background: var(--bh-ink);
+    color: var(--bh-honey);
+    font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+    font-stretch: 125%;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .home-numbers__item:nth-child(even) .home-numbers__value {
+    background: var(--bh-honey);
+    color: var(--bh-ink);
+  }
+  .home-numbers__caption {
+    max-width: 18ch;
+    margin: 0;
+    font-weight: 700;
+  }
+  @media (min-width: 56rem) {
+    .home-numbers__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

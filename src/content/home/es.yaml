@@ -1,0 +1,310 @@
+# Bin Hive landing — copy en español (locale raíz "/").
+# Fuente única de verdad para BSI (binflow/surface-inventory.yaml).
+# Reglas: los `id` de listas son estables e idénticos en es.yaml y en.yaml;
+# nunca renombres un id publicado (es parte del bf_id). Ver docs/BSI.md.
+
+meta:
+  title: "Agentes de IA para redes sociales con propósito | Bin Hive"
+  description: "Agentes de IA para redes sociales: Bin Hive convierte una idea en hooks, guiones y copies para Instagram, TikTok, YouTube Shorts y X. Únete a la lista."
+  og_image_alt: "Bin Hive: una colmena de agentes de IA para redes sociales, con celdas para Instagram, TikTok, YouTube Shorts y X"
+
+nav:
+  skip_label: "Saltar al contenido"
+  home_aria_label: "Bin Hive, inicio"
+  links:
+    - id: how
+      label: "Cómo funciona"
+      href: "#como-funciona"
+    - id: hives
+      label: "Colmenas"
+      href: "#colmenas"
+    - id: audiences
+      label: "Para quién"
+      href: "#para-quien"
+    - id: faq
+      label: "Preguntas"
+      href: "#preguntas"
+  menu_aria_label: "Secciones de la página"
+  cta_label: "Unirme a la lista"
+  cta_href: "#lista-de-espera"
+  lang_label: "EN"
+  lang_aria_label: "Read this page in English"
+
+hero:
+  eyebrow: "Apiario de IA · Release en camino"
+  heading: "Agentes de IA para redes sociales, organizados como una colmena."
+  subheading: "Bin Hive convierte una idea suelta en ideas, hooks, guiones y copies listos para aprobar. Una colmena por red, y un objetivo claro detrás de cada pieza."
+  body: "Dejas de publicar por publicar. Tú pones la idea y el criterio; la colmena pone el oficio de cada red."
+  email_label: "Tu correo"
+  email_placeholder: "tu@correo.com"
+  submit_label: "Quiero acceso anticipado"
+  secondary_cta_label: "Ver cómo funciona"
+  secondary_cta_href: "#como-funciona"
+  microcopy: "Sin spam. Te escribimos cuando abramos lugares, y nada más."
+  visual_alt: "Panal con cuatro celdas activas: Instagram, TikTok, YouTube Shorts y X"
+
+problem:
+  eyebrow: "El problema"
+  heading: "Publicar todos los días sin rumbo cansa. Y se nota."
+  intro: "Tienes ideas, pero convertirlas en contenido que funcione en cada red es otro trabajo. Y cuando la IA genérica entra al juego, todo empieza a sonar igual."
+  items:
+    - id: generic
+      title: "Contenido genérico"
+      description: "Un mismo texto pegado en cuatro redes no funciona en ninguna. Cada plataforma premia otra duración, otro hook y otro cierre."
+    - id: repeat
+      title: "Ideas que se repiten"
+      description: "Sin memoria, vuelves a proponer lo que ya publicaste hace dos meses, con otras palabras."
+    - id: purpose
+      title: "Piezas sin objetivo"
+      description: "Si no sabes para qué existe un video, tampoco sabes si funcionó."
+    - id: feedback
+      title: "Métricas que nadie lee"
+      description: "Los números viven en un CSV y nunca regresan a la siguiente idea."
+
+whatis:
+  eyebrow: "Qué es Bin Hive"
+  heading: "Un apiario de agentes de IA con un solo propósito: tu contenido."
+  body: "Bin Hive organiza a sus agentes como una colmena real. Cada uno tiene un oficio, cada red tiene su propio equipo y todo pasa por ti antes de salir. No es un chat que improvisa: es un sistema con roles, memoria y control de calidad."
+  roles:
+    - id: beekeeper
+      name: "Apicultor"
+      role: "Tu punto de entrada"
+      description: "Le pasas una idea, un borrador o un guion a medias. Él decide qué colmenas y qué agentes necesita tu pedido."
+    - id: hive
+      name: "Colmenas"
+      role: "Un equipo por red"
+      description: "Instagram, TikTok, YouTube Shorts y X tienen su propio equipo, afinado con lo que funciona en cada plataforma."
+    - id: queen
+      name: "Reina"
+      role: "Las reglas de cada colmena"
+      description: "Guarda los valores por defecto de su red y arma el equipo justo para cada solicitud."
+    - id: workers
+      name: "Obreras"
+      role: "Especialistas"
+      description: "Ideas, hooks, guiones, copies y pruebas. Solo trabajan las que tu pedido necesita."
+
+how:
+  eyebrow: "Cómo funciona"
+  heading: "Cómo trabajan los agentes de IA de Bin Hive, en seis pasos."
+  intro: "De una idea suelta a una pieza lista para grabar o publicar. Sin formularios eternos y sin empezar de cero cada vez."
+  steps:
+    - id: ask
+      title: "Pides desde donde estés"
+      description: "Un tema, una frase, un borrador, un guion final o una pieza vieja para reciclar. La colmena arranca desde ahí."
+    - id: interview
+      title: "Te pregunta solo lo que falta"
+      description: "Si algo no está claro, te hace hasta 4 preguntas por ronda. Si ya lo dijiste, no te lo vuelve a pedir."
+    - id: work
+      title: "La colmena trabaja en paralelo"
+      description: "Cada obrera hace su parte al mismo tiempo que las demás, cuando el trabajo lo permite."
+    - id: review
+      title: "Revisión automática"
+      description: "Una catadora prueba la pieza contra las reglas de la red, y las guardianas cuidan tu tono y los datos. Hasta 2 rondas de corrección."
+    - id: approve
+      title: "Tú apruebas"
+      description: "Eliges la idea, ajustas lo que quieras y decides qué se publica. Nada sale sin tu visto bueno."
+    - id: learn
+      title: "La memoria aprende"
+      description: "Lo aprobado, lo rechazado y tus métricas alimentan la siguiente solicitud."
+
+hives:
+  eyebrow: "Colmenas por red"
+  heading: "Una colmena nativa para cada red social."
+  intro: "Agentes genéricos producen contenido genérico. Por eso cada red tiene su propio equipo, con su duración, su estilo de hook y su llamada a la acción."
+  items:
+    - id: instagram
+      title: "Instagram"
+      tagline: "Reels de 30 segundos"
+      description: "Hook en los primeros 3 segundos, cierre en loop y un llamado a guardar. Pensada para descubrimiento y confianza diaria."
+    - id: tiktok
+      title: "TikTok"
+      tagline: "Resultado primero"
+      description: "Abre con el resultado, dice la palabra clave en voz y subtitula todo, porque mucha gente ve sin sonido."
+    - id: youtube
+      title: "YouTube Shorts"
+      tagline: "Hook en 2 segundos"
+      description: "Directo al grano, con un puente hacia tus videos largos y la suscripción como siguiente paso."
+    - id: x
+      title: "X"
+      tagline: "Opinión con datos"
+      description: "Posturas claras, datos concretos y una pregunta que invite a responder. Ideal para posicionarte y conversar."
+
+workers:
+  eyebrow: "Las obreras"
+  heading: "Especialistas de IA que trabajan como un equipo editorial."
+  intro: "Cada colmena tiene cinco obreras. Encima de ellas, siete servicios compartidos cuidan la estrategia, las tendencias, las métricas y tu marca."
+  items:
+    - id: ideadora
+      name: "Ideadora"
+      role: "Ideas"
+      description: "Propone ideas alineadas a tus pilares y descarta las que ya usaste."
+    - id: aguijon
+      name: "Aguijón"
+      role: "Hooks"
+      description: "Escribe y rankea los primeros segundos, donde se gana o se pierde a la audiencia."
+    - id: guionista
+      name: "Guionista"
+      role: "Guiones"
+      description: "Convierte la idea elegida en un guion con el ritmo y la duración de la red."
+    - id: pluma
+      name: "Pluma"
+      role: "Copy"
+      description: "Caption, hashtags y llamada a la acción, sin frases de texto de IA."
+    - id: catadora
+      name: "Catadora"
+      role: "Pruebas"
+      description: "Revisa las specs de la red y simula cómo reaccionaría tu audiencia."
+  services_heading: "Servicios compartidos del apiario"
+  services:
+    - id: arquitecta
+      name: "Arquitecta"
+      description: "Estrategia editorial y plan semanal."
+    - id: exploradora
+      name: "Exploradora"
+      description: "Radar de tendencias con fuentes citadas."
+    - id: danzante
+      name: "Danzante"
+      description: "Lee tus métricas y encuentra qué funciona."
+    - id: cronista
+      name: "Cronista"
+      description: "Historias de build in public y procesos."
+    - id: guardiana_marca
+      name: "Guardiana de marca"
+      description: "Cuida tu voz y tu tono en cada pieza."
+    - id: guardiana_tecnica
+      name: "Guardiana técnica"
+      description: "Verifica datos antes de que los digas."
+
+benefits:
+  eyebrow: "Por qué Bin Hive"
+  heading: "Más contenido con intención, menos contenido de relleno."
+  items:
+    - id: native
+      title: "Nativo por red, no adaptado"
+      description: "Cada colmena escribe para su plataforma desde el inicio, en lugar de recortar un texto único."
+    - id: goal
+      title: "Cada pieza tiene un porqué"
+      description: "Posicionamiento, confianza o leads: el objetivo se declara antes de escribir y se mide después."
+    - id: memory
+      title: "No se repite"
+      description: "Revisa la memoria antes y después de generar para no proponerte lo mismo dos veces."
+    - id: quality
+      title: "Control de calidad integrado"
+      description: "Quien escribe y quien revisa no comparten contexto. Así la revisión es honesta."
+    - id: tuning
+      title: "Se afina en tu idioma"
+      description: "Dile “quiero hooks más polémicos en TikTok” y la colmena ajusta su configuración."
+    - id: control
+      title: "Tú tienes la última palabra"
+      description: "Bin Hive propone, tú decides. Nada se publica de forma automática."
+
+audiences:
+  eyebrow: "Para quién"
+  heading: "Hecho para creadores y para agencias que llevan varias marcas."
+  items:
+    - id: creators
+      title: "Creadores y marcas personales"
+      description: "Para quien quiere publicar seguido sin perder su voz ni el rumbo editorial."
+      points:
+        - id: daily
+          text: "Sostén una cadencia diaria con un equipo pequeño."
+        - id: voice
+          text: "Tu tono y tus pilares, siempre presentes."
+        - id: metrics
+          text: "Tus métricas regresan a la siguiente idea."
+      cta_label: "Soy creador, quiero entrar"
+    - id: agencies
+      title: "Agencias y equipos de social media"
+      description: "Unifica la creación y la planificación de todos tus clientes en un solo lugar."
+      points:
+        - id: profiles
+          text: "Un perfil por cliente, gestionado bajo tu cuenta de agencia."
+        - id: voices
+          text: "Cada perfil con su propia voz, objetivos y colmenas."
+        - id: planning
+          text: "Planificación y aprobaciones de todas las cuentas, en un solo tablero."
+      cta_label: "Soy agencia, quiero entrar"
+
+numbers:
+  eyebrow: "La colmena en números"
+  heading: "Un sistema de agentes con estructura real."
+  items:
+    - id: agents
+      value: "27"
+      caption: "agentes especializados"
+    - id: hives
+      value: "4"
+      caption: "colmenas, una por red"
+    - id: memory
+      value: "90 días"
+      caption: "de memoria sin repetir ideas"
+    - id: questions
+      value: "≤4"
+      caption: "preguntas por ronda, solo si falta algo"
+
+trust:
+  eyebrow: "Control"
+  heading: "La IA propone. Tú decides qué sale al aire."
+  body: "Bin Hive nació para producir el contenido de @arrobabeto todos los días. Por eso está hecho para trabajar contigo, no en tu lugar."
+  items:
+    - id: approve
+      text: "Apruebas cada pieza antes de publicarla."
+    - id: no_autopublish
+      text: "No publica por su cuenta en tus redes."
+    - id: no_invent
+      text: "Nunca inventa datos de tus productos: marca lo que falta para que lo confirmes."
+    - id: isolated
+      text: "La escritora y la revisora trabajan con contextos separados."
+
+faq:
+  eyebrow: "Preguntas frecuentes"
+  heading: "Preguntas frecuentes sobre Bin Hive."
+  items:
+    - id: what
+      question: "¿Qué es Bin Hive?"
+      answer: "Bin Hive es un apiario de agentes de IA para redes sociales. Convierte una idea en ideas, hooks, guiones y copies para Instagram, TikTok, YouTube Shorts y X, con una colmena especializada por red."
+    - id: publish
+      question: "¿Publica por mí?"
+      answer: "No. Bin Hive prepara las piezas y tú decides qué se graba y qué se publica. La publicación es manual a propósito."
+    - id: generic
+      question: "¿El contenido va a sonar a IA?"
+      answer: "Cada pieza pasa por una revisión de tono con una lista de frases prohibidas típicas del texto generado por IA. Además, tú editas y apruebas todo antes de publicar."
+    - id: agencies
+      question: "¿Sirve para una agencia con varios clientes?"
+      answer: "Sí. Tu cuenta de agencia agrupa un perfil por cliente, cada uno con su voz, sus objetivos y sus colmenas, y planificas todo desde un solo lugar."
+    - id: networks
+      question: "¿Qué redes sociales soporta?"
+      answer: "Instagram (Reels), TikTok, YouTube Shorts y X. Cada una tiene su propia colmena y se pueden sumar más redes después."
+    - id: release
+      question: "¿Cuándo puedo usarlo?"
+      answer: "Estamos preparando el release. Anótate en la lista de espera y te avisamos primero cuando abramos lugares."
+    - id: price
+      question: "¿Cuánto cuesta?"
+      answer: "Los planes se anunciarán con el release. Quienes estén en la lista de espera los conocerán antes que nadie."
+
+waitlist:
+  eyebrow: "Lista de espera"
+  heading: "Anótate en la lista de espera de Bin Hive."
+  subheading: "Abriremos lugares por tandas. Déjanos tus datos y te escribimos cuando sea tu turno."
+  name_label: "Nombre"
+  name_placeholder: "Cómo te llamas"
+  email_label: "Correo electrónico"
+  email_placeholder: "tu@correo.com"
+  profile_label: "¿Cómo usarías Bin Hive?"
+  profile_creator_label: "Creador o marca personal"
+  profile_agency_label: "Agencia o equipo con varios clientes"
+  consent_label: "Acepto recibir correos sobre Bin Hive y el aviso de privacidad."
+  privacy_link_label: "Leer el aviso de privacidad"
+  privacy_link_href: "/privacidad/"
+  submit_label: "Unirme a la lista de espera"
+  submitting_label: "Enviando…"
+  success_heading: "¡Listo, ya estás en la colmena!"
+  success_body: "Revisa tu correo para confirmar tu lugar. Si no lo ves, busca en promociones o spam."
+
+footer:
+  tagline: "Bin Hive: agentes de IA para redes sociales, organizados como una colmena."
+  credit: "Un proyecto de Arrobabeto Media, hecho en México."
+  privacy_label: "Aviso de privacidad"
+  privacy_href: "/privacidad/"
+  social_heading: "Síguenos"
+  lang_label: "English"

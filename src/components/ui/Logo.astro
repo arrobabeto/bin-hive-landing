@@ -1,0 +1,36 @@
+---
+// Bin Hive wordmark: hex cell with a "B" comb + stacked wordmark.
+interface Props {
+  size?: number;
+  inverted?: boolean;
+}
+const { size = 40, inverted = false } = Astro.props;
+const fg = inverted ? 'var(--bh-honey)' : 'var(--bh-ink)';
+const cell = inverted ? 'var(--bh-ink)' : 'var(--bh-honey)';
+---
+
+<span class="home-logo" style={`--logo-fg:${fg}`}>
+  <svg width={size} height={Math.round(size * 1.1547)} viewBox="0 0 60 69.28" aria-hidden="true" focusable="false">
+    <polygon points="30,2 58,18.2 58,51.1 30,67.3 2,51.1 2,18.2" fill={cell} stroke={fg} stroke-width="4" stroke-linejoin="miter"></polygon>
+    <polygon points="30,17 42,24 42,38 30,45 18,38 18,24" fill={fg}></polygon>
+    <polygon points="30,45 42,52 30,59 18,52" fill={fg}></polygon>
+  </svg>
+  <span class="home-logo__word">Bin<br />Hive</span>
+</span>
+
+<style>
+  .home-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--logo-fg);
+  }
+  .home-logo__word {
+    font-stretch: 125%;
+    font-weight: 900;
+    font-size: 0.95rem;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+</style>

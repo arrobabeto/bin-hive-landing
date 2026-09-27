@@ -1,0 +1,132 @@
+---
+// Hero visual: a honeycomb cluster whose four labeled cells are the hives.
+// Decorative geometry + labels taken from the hives content (no extra copy).
+interface Props {
+  label: string;
+  hives: { id: string; title: string }[];
+}
+const { label, hives } = Astro.props;
+
+const R = 60; // circumradius (pointy-top)
+const W = Math.sqrt(3) * R;
+const points = (cx: number, cy: number) =>
+  [0, 1, 2, 3, 4, 5]
+    .map((i) => {
+      const a = (Math.PI / 180) * (60 * i - 90);
+      return `${(cx + R * Math.cos(a)).toFixed(1)},${(cy + R * Math.sin(a)).toFixed(1)}`;
+    })
+    .join(' ');
+
+type Cell = { col: number; row: number; tone: 'hive' | 'core' | 'wax' | 'honey' | 'empty'; hive?: number };
+const cells: Cell[] = [
+  { col: 1, row: 0, tone: 'wax' },
+  { col: 2, row: 0, tone: 'hive', hive: 0 },
+  { col: 3, row: 0, tone: 'empty' },
+  { col: 0, row: 1, tone: 'empty' },
+  { col: 1, row: 1, tone: 'hive', hive: 1 },
+  { col: 2, row: 1, tone: 'core' },
+  { col: 3, row: 1, tone: 'hive', hive: 2 },
+  { col: 1, row: 2, tone: 'honey' },
+  { col: 2, row: 2, tone: 'hive', hive: 3 },
+  { col: 3, row: 2, tone: 'wax' },
+];
+
+const cx = (c: Cell) => 70 + c.col * W + (c.row % 2 === 0 ? W / 2 : 0);
+const cy = (c: Cell) => 75 + c.row * R * 1.5;
+const words = (title: string) => title.split(' ');
+---
+
+<svg class="home-comb" viewBox="0 0 520 340" role="img" aria-label={label}>
+  <defs>
+    <pattern id="home-comb-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="var(--bh-paper)"></rect>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="var(--bh-ink)" stroke-width="3"></line>
+    </pattern>
+  </defs>
+  {
+    cells.map((c, i) => {
+      const hive = c.hive !== undefined ? hives[c.hive] : undefined;
+      return (
+        <g class={`home-comb__cell home-comb__cell--${c.tone}`} style={`--i:${i}`}>
+          <polygon class="home-comb__shadow" points={points(cx(c) + 8, cy(c) + 8)} />
+          <polygon class="home-comb__hex" points={points(cx(c), cy(c))} />
+          {hive && (
+            <text x={cx(c)} y={cy(c) - (words(hive.title).length - 1) * 8} class="home-comb__label" text-anchor="middle" dominant-baseline="middle">
+              {words(hive.title).map((w, wi) => (
+                <tspan x={cx(c)} dy={wi === 0 ? 0 : 17}>{w}</tspan>
+              ))}
+            </text>
+          )}
+          {c.tone === 'core' && (
+            <g transform={`translate(${cx(c) - 22} ${cy(c) - 25})`}>
+              <polygon points="22,0 44,12.7 44,38.1 22,50.8 0,38.1 0,12.7" fill="var(--bh-honey)" />
+              <polygon points="22,11 31,16.2 31,26.6 22,31.8 13,26.6 13,16.2" fill="var(--bh-ink)" />
+              <polygon points="22,31.8 31,37 22,42.2 13,37" fill="var(--bh-ink)" />
+            </g>
+          )}
+        </g>
+      );
+    })
+  }
+</svg>
+
+<style>
+  .home-comb {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .home-comb__shadow {
+    fill: var(--bh-ink);
+  }
+  .home-comb__hex {
+    stroke: var(--bh-ink);
+    stroke-width: 4;
+    stroke-linejoin: miter;
+    transition: transform var(--bh-fast) var(--bh-ease);
+  }
+  .home-comb__cell--hive .home-comb__hex {
+    fill: var(--bh-white);
+  }
+  .home-comb__cell--core .home-comb__hex {
+    fill: var(--bh-ink);
+  }
+  .home-comb__cell--wax .home-comb__hex {
+    fill: var(--bh-wax);
+  }
+  .home-comb__cell--honey .home-comb__hex {
+    fill: var(--bh-honey);
+    animation: home-comb-fill 3.6s var(--bh-ease) infinite alternate;
+  }
+  .home-comb__cell--empty .home-comb__hex {
+    fill: url(#home-comb-hatch);
+  }
+  .home-comb__cell--empty .home-comb__shadow,
+  .home-comb__cell--wax .home-comb__shadow {
+    opacity: 0;
+  }
+  .home-comb__label {
+    fill: var(--bh-ink);
+    font-family: var(--bh-font-sans);
+    font-size: 14px;
+    font-stretch: 100%;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  @media (hover: hover) {
+    .home-comb__cell--hive:hover .home-comb__hex {
+      fill: var(--bh-honey);
+      transform: translate(-3px, -3px);
+    }
+  }
+  @keyframes home-comb-fill {
+    from {
+      fill: var(--bh-wax);
+    }
+    to {
+      fill: var(--bh-honey);
+    }
+  }
+</style>

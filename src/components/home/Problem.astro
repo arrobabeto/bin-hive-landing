@@ -1,0 +1,69 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { bf } from '../../lib/bsi';
+import type { HomeContent } from '../../lib/home-schema';
+
+interface Props {
+  content: HomeContent['problem'];
+  anchor: string;
+  index: number;
+  total: number;
+}
+const { content, anchor, index, total } = Astro.props;
+---
+
+<section id={anchor} class="home-section home-problem" aria-labelledby={`${anchor}-h`} {...bf('home.problem.shell', 'container')}>
+  <div class="home-container">
+    <SectionHeader section="problem" index={index} total={total} eyebrow={content.eyebrow} heading={content.heading} headingId={`${anchor}-h`} intro={content.intro} />
+    <ul class="home-problem__grid">
+      {
+        content.items.map((item, i) => (
+          <li class="home-card home-problem__item" data-reveal>
+            <span class="home-problem__x home-mono" aria-hidden="true">✕ 0{i + 1}</span>
+            <h3 class="home-h3" {...bf(`home.problem.${item.id}_title`, 'copy')}>{item.title}</h3>
+            <p class="home-text" {...bf(`home.problem.${item.id}_description`, 'copy')}>{item.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .home-problem {
+    background: var(--bh-paper-2);
+  }
+  .home-problem__grid {
+    display: grid;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .home-problem__item {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+  }
+  .home-problem__x {
+    justify-self: start;
+    padding: 0.125rem 0.5rem;
+    background: var(--bh-stinger);
+    border: var(--bh-border-thin) solid var(--bh-ink);
+    font-size: var(--bh-text-sm);
+    font-weight: 700;
+  }
+  @media (min-width: 40rem) {
+    .home-problem__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 64rem) {
+    .home-problem__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .home-problem__item:nth-child(even) {
+      transform: translateY(2rem);
+    }
+  }
+</style>
