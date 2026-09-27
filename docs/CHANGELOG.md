@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-09-27 (d)
+
+- Aviso de privacidad ES/EN reescrito conforme a la LFPDPPP 2025 (DOF 20-03-2025):
+  - Responsable persona física con domicilio y contacto `hola@arrobabeto.com` (art. 15-I).
+  - Finalidades primarias (lista de espera, lanzamiento, novedades) y secundarias (promociones y marketing, análisis agregado).
+  - Cómo negarte a las secundarias o limitar el uso: correo, enlace de baja o REPEP.
+  - Sin cookies en el sitio; los correos miden aperturas y clics. MailerLite y Vercel como encargados. Conservación de los datos.
+  - Procedimiento ARCO completo (arts. 28, 31 y 34) y la Secretaría Anticorrupción y Buen Gobierno como autoridad.
+- El `consent_label` del formulario de cierre ahora nombra las promociones. Los dos formularios solo enlazan al aviso integral (sin aviso simplificado, por decisión del propietario).
+- El microcopy del hero ya no promete "nada más" que el aviso de lugares.
+- Tests: `tests/legal.test.ts`. BSI: 219 superficies.
+
 ## 2026-09-27 (c)
 
 - Navbar móvil rehecha: barra de una línea (logo · CTA · botón de menú) y panel desplegable con las secciones y el cambio de idioma. Antes eran dos filas con una tira de enlaces cortada.

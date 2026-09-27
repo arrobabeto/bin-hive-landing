@@ -436,7 +436,7 @@ surfaces:
     locator: github:src/content/home/{locale}.yaml#hero.microcopy
     locales: [es, en]
     publication_target: github_content
-    sample: Sin spam. Te escribimos cuando abramos lugares, y nada más.
+    sample: Sin spam. Te escribimos cuando abramos lugares y con novedades de Bin Hive.
   - bf_id: home.hero.privacy_note
     kind: copy
     area: home
@@ -1919,7 +1919,7 @@ surfaces:
     locator: github:src/content/home/{locale}.yaml#waitlist.consent_label
     locales: [es, en]
     publication_target: github_content
-    sample: Acepto recibir correos sobre Bin Hive y el aviso de privacidad.
+    sample: Acepto recibir correos de Bin Hive con novedades, lanzamientos y promociones, y acepto el aviso de privacidad.
     deny_reason: CTA / form / navigation label — UI chrome, not edit_text
   - bf_id: home.waitlist.privacy_link_label
     kind: chrome_denied

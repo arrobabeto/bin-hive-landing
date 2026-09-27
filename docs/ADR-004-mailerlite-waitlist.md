@@ -21,5 +21,5 @@ La landing no es de auto-enrolamiento: solo captura interesados para el release.
 - `MAILERLITE_API_KEY` (secreto, `astro:env` server) y `PUBLIC_MAILERLITE_GROUP_ID` son obligatorias; el build falla sin ellas (`validateSecrets: true`).
 - El endpoint valida con zod, filtra el honeypot, rechaza orígenes cruzados y no expone detalles de MailerLite al cliente.
 - Los campos personalizados `perfil` e `idioma` deben existir en MailerLite.
-- Los datos quedan en MailerLite; el aviso de privacidad lo declara.
+- Los datos quedan en MailerLite; el aviso de privacidad lo declara. El aviso integral (`/privacidad/`, `/en/privacy/`) separa las finalidades primarias de las secundarias (marketing); ambos formularios enlazan a él. Ver [FORMS.md](./FORMS.md#aviso-de-privacidad).
 - Detalles y configuración: [FORMS.md](./FORMS.md).

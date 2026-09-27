@@ -48,6 +48,24 @@ El honeypot `website` nunca llega a MailerLite; si viene lleno, el endpoint resp
 
 El endpoint envía `fields.perfil` y `fields.idioma`. **Deben existir como campos personalizados** en MailerLite (Subscribers → Fields); si no, MailerLite descarta esos valores. `name` es un campo por defecto.
 
+## Aviso de privacidad
+
+Cumple la LFPDPPP 2025.
+
+- **Integral:** `src/content/legal/{es,en}.md` → `/privacidad/` y `/en/privacy/`. Incluye:
+  - Responsable, domicilio y contacto (`hola@arrobabeto.com`).
+  - Finalidades primarias y secundarias, y cómo negarte a las secundarias.
+  - Cookies, encargados (MailerLite y Vercel), conservación y procedimiento ARCO.
+- Los formularios no muestran aviso simplificado (decisión del propietario): el hero dice "Al unirte aceptas nuestro aviso de privacidad" y el de cierre tiene el checkbox de consentimiento más el enlace "Leer el aviso de privacidad".
+- `tests/legal.test.ts` verifica que el aviso integral lleva la identidad, el domicilio y el contacto.
+
+Mantén el aviso sincronizado con lo que realmente pasa:
+
+- Si agregas un campo al formulario, decláralo en "Qué datos tratamos".
+- Si agregas analítica o cookies, actualiza "Cookies y tecnologías de rastreo".
+- Si apagas en MailerLite la medición de aperturas y clics, quita esa mención.
+- Actualiza la fecha en `updated`.
+
 ## Double opt-in
 
 Por defecto, un alta por API queda activa sin correo de confirmación. Si quieres confirmación, activa en MailerLite **Account settings → Subscribe settings → "Double opt-in for API and integrations"**. El copy de éxito no promete confirmación, así que sirve en ambos casos.
