@@ -25,6 +25,8 @@ nav:
       label: "Preguntas"
       href: "#preguntas"
   menu_aria_label: "Secciones de la página"
+  menu_label: "Menú"
+  menu_close_aria_label: "Cerrar menú"
   cta_label: "Unirme a la lista"
   cta_href: "#lista-de-espera"
   lang_label: "EN"

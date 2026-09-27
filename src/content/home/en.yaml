@@ -25,6 +25,8 @@ nav:
       label: "FAQ"
       href: "#faq"
   menu_aria_label: "Page sections"
+  menu_label: "Menu"
+  menu_close_aria_label: "Close menu"
   cta_label: "Join the waitlist"
   cta_href: "#waitlist"
   lang_label: "ES"

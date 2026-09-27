@@ -20,6 +20,8 @@ export const homeSchema = z.object({
     home_aria_label: text,
     links: z.array(z.object({ id, label: text, href: anchor })).min(1),
     menu_aria_label: text,
+    menu_label: text,
+    menu_close_aria_label: text,
     cta_label: text,
     cta_href: anchor,
     lang_label: text,

@@ -277,6 +277,27 @@ surfaces:
     sample: Secciones de la página
     deny_reason: Accessibility metadata — not body copy
     notes: Rendered as an attribute of a marked sibling element; no own marker.
+  - bf_id: shared.nav.menu_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.menu_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Menú
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: shared.nav.menu_close_aria_label
+    kind: chrome_denied
+    area: shared
+    section: nav
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#nav.menu_close_aria_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: Cerrar menú
+    deny_reason: Accessibility metadata — not body copy
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
   - bf_id: shared.nav.cta_label
     kind: chrome_denied
     area: shared

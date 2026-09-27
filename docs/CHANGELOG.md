@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-27 (c)
+
+- Navbar móvil rehecha: barra de una línea (logo · CTA · botón de menú) y panel desplegable con las secciones y el cambio de idioma. Antes eran dos filas con una tira de enlaces cortada.
+- Menú accesible (`aria-expanded` / `aria-controls`, foco al primer enlace, Escape devuelve el foco, cierra al elegir sección o tocar fuera) en `src/scripts/menu.ts`, con tests. Sin JS el panel queda visible.
+- En móviles de 368px o menos solo se muestra el hexágono del logo. `scroll-padding-top` unificado.
+- BSI: `shared.nav.menu_label` y `shared.nav.menu_close_aria_label` (219 superficies).
+
 ## 2026-09-27 (b)
 
 - Lista de espera: del formulario embebido de MailerLite a la **API de MailerLite** vía `/api/waitlist.json` (Vercel Function, `@astrojs/vercel`). La key es solo de servidor (`astro:env`, `validateSecrets`).
