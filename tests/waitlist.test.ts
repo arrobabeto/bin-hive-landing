@@ -3,17 +3,16 @@ import {
   HONEYPOT_FIELD,
   SUCCESS_EVENT,
   WaitlistSubmissionError,
-  actionIds,
   initWaitlist,
   submitWaitlist,
 } from '../src/scripts/waitlist';
 
-const ACTION = 'https://assets.mailerlite.com/jsonp/123456/forms/abcDEF1/subscribe';
+const ACTION = 'http://localhost:3000/api/waitlist.json';
 
 function buildForm(action = ACTION) {
   document.body.innerHTML = `
     <form method="post" action="${action}">
-      <input name="fields[email]" value="ana@example.com" />
+      <input name="email" value="ana@example.com" />
       <input name="${HONEYPOT_FIELD}" value="" />
       <button type="submit">Unirme</button>
       <p data-waitlist-status></p>
@@ -32,13 +31,6 @@ const json = (body: unknown, status = 200) =>
 
 const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
 
-describe('actionIds', () => {
-  it('extracts ids from the MailerLite action', () => {
-    expect(actionIds(ACTION)).toEqual({ accountId: '123456', formId: 'abcDEF1' });
-    expect(actionIds('https://example.com/form')).toBeNull();
-  });
-});
-
 describe('submitWaitlist', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
@@ -53,24 +45,23 @@ describe('submitWaitlist', () => {
     expect(url).toBe(ACTION);
     expect(init.method).toBe('POST');
     const body = init.body as FormData;
-    expect(body.get('fields[email]')).toBe('ana@example.com');
+    expect(body.get('email')).toBe('ana@example.com');
     expect(body.has(HONEYPOT_FIELD)).toBe(false);
   });
 
-  it('refuses to send when the ids are missing (configuration)', async () => {
-    const { form } = buildForm('https://assets.mailerlite.com/jsonp//forms//subscribe');
-    const fetchImpl = vi.fn();
+  it('uses the error kind reported by the endpoint', async () => {
+    const { form } = buildForm();
+    const fetchImpl = vi.fn().mockResolvedValue(json({ success: false, error: 'configuration' }, 503));
     await expect(submitWaitlist(form, { fetchImpl })).rejects.toMatchObject({ kind: 'configuration' });
-    expect(fetchImpl).not.toHaveBeenCalled();
   });
 
   it.each([
     [429, 'rate-limit'],
     [500, 'server'],
     [422, 'rejected'],
-  ])('maps HTTP %i to %s', async (status, kind) => {
+  ])('maps HTTP %i without a known error kind to %s', async (status, kind) => {
     const { form } = buildForm();
-    const fetchImpl = vi.fn().mockResolvedValue(json({}, status));
+    const fetchImpl = vi.fn().mockResolvedValue(new Response('oops', { status }));
     await expect(submitWaitlist(form, { fetchImpl })).rejects.toMatchObject({ kind });
   });
 
@@ -122,7 +113,7 @@ describe('initWaitlist', () => {
     expect(form.dataset.submissionState).toBe('error');
     expect(status.textContent).toMatch(/no está disponible/);
     expect(form.querySelector('button')!.disabled).toBe(false);
-    expect((form.elements.namedItem('fields[email]') as HTMLInputElement).value).toBe('ana@example.com');
+    expect((form.elements.namedItem('email') as HTMLInputElement).value).toBe('ana@example.com');
   });
 
   it('reveals the success panel and emits the success event', async () => {

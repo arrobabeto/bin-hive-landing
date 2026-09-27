@@ -1,44 +1,62 @@
-# Forms: lista de espera (MailerLite)
+# Forms: lista de espera (MailerLite API)
 
-## Servicio
+## Arquitectura
 
-MailerLite, mediante su formulario embebido (endpoint público `https://assets.mailerlite.com/jsonp/<ACCOUNT_ID>/forms/<FORM_ID>/subscribe`). No hay backend propio. Ver [ADR-004](./ADR-004-mailerlite-waitlist.md).
+```text
+<form action="/api/waitlist.json">  ──POST──▶  Vercel function (src/pages/api/waitlist.json.ts)
+   (HTML estático + mejora progresiva)            │  valida (zod), honeypot, origin
+                                                  ▼
+                                   MailerLite API · POST https://connect.mailerlite.com/api/subscribers
+                                   Authorization: Bearer MAILERLITE_API_KEY
+                                   { email, fields: { name, perfil, idioma }, groups: [PUBLIC_MAILERLITE_GROUP_ID] }
+```
 
-## Instancias
-
-| Dónde | Campos |
-|---|---|
-| Hero (`#hero-email`) | `fields[email]` |
-| Cierre (`#lista-de-espera` / `#waitlist`) | `fields[name]`, `fields[email]`, `fields[perfil]` (`creador` \| `agencia`), consentimiento |
-
-Ambas envían también `fields[idioma]` (`es` \| `en`), `ml-submit=1` y `anticsrf=true`. El honeypot `website` nunca se envía; si viene lleno, el script simula éxito sin hacer la petición.
-
-Los CTAs de "Para quién" preseleccionan `fields[perfil]` con `data-profile`.
-
-## Configuración en MailerLite (una vez)
-
-1. Crea un grupo, por ejemplo "Bin Hive · Waitlist".
-2. Crea los campos personalizados `perfil` (texto) e `idioma` (texto).
-3. Crea un **Embedded form** que suscriba a ese grupo, con los campos email, name, perfil e idioma. Activa el double opt-in si lo quieres; el copy de éxito ya pide revisar el correo.
-4. Del código HTML del embed, copia `<ACCOUNT_ID>` y `<FORM_ID>` de la URL `…/jsonp/<ACCOUNT_ID>/forms/<FORM_ID>/subscribe`.
-5. Configura `PUBLIC_MAILERLITE_ACCOUNT_ID` y `PUBLIC_MAILERLITE_FORM_ID` en Vercel (Preview y Production) y en los secrets de GitHub Actions.
-
-> Por verificar con los IDs reales: que el endpoint responda `{"success": true}` con CORS abierto para `fetch` (es el mismo endpoint que usa el JS oficial de MailerLite) y que los campos personalizados se guarden con esos nombres. Sin JS, el POST nativo sigue registrando al usuario, pero el navegador muestra la respuesta JSON cruda.
+- Todas las páginas siguen prerenderizadas. El endpoint es la **única** ruta on-demand; ver [ADR-002](./ADR-002-static-hosting.md) y [ADR-004](./ADR-004-mailerlite-waitlist.md).
+- La lógica vive en `src/lib/waitlist-server.ts`, con tests en `tests/waitlist-server.test.ts`. La ruta de Astro es solo un adaptador.
+- La API key se lee con `astro:env/server` (`access: 'secret'`, en runtime) y **nunca** llega al navegador ni al HTML. Verificado: no aparece en `.vercel/output`.
 
 ## Variables de entorno
 
-Son públicas por diseño, porque los IDs aparecen en el HTML. Los builds de producción fallan si faltan o son placeholders (`src/lib/mailerlite-config.mjs`, llamado desde `astro.config.mjs`).
+| Variable | Uso | Dónde configurarla |
+|---|---|---|
+| `MAILERLITE_API_KEY` | Token de la API (secreto) | `.env` local, Vercel (Production + Preview) |
+| `PUBLIC_MAILERLITE_GROUP_ID` | Grupo de la lista de espera ("Binhive") | `.env` local, Vercel (Production + Preview) |
 
-```bash
-PUBLIC_MAILERLITE_ACCOUNT_ID=123456 PUBLIC_MAILERLITE_FORM_ID=abc123 pnpm build
-```
+Con `validateSecrets: true`, `astro build` falla si falta alguna. El CI usa valores ficticios solo para compilar; nunca despliega.
+
+## Instancias del formulario
+
+| Dónde | Campos enviados |
+|---|---|
+| Hero (`#hero-email`) | `email`, `idioma` |
+| Cierre (`#lista-de-espera` / `#waitlist`) | `name`, `email`, `perfil` (`creador` \| `agencia`), `consent`, `idioma` |
+
+El honeypot `website` nunca llega a MailerLite; si viene lleno, el endpoint responde éxito sin hacer nada. Los CTAs de "Para quién" preseleccionan `perfil`.
+
+## Respuestas del endpoint
+
+| Caso | JS (`Accept: application/json`) | Sin JS (POST nativo) |
+|---|---|---|
+| Alta nueva o existente (MailerLite 201 / 200) | `200 {"success":true}` | `303` → `/gracias/` · `/en/thanks/` (noindex) |
+| Datos inválidos (zod o MailerLite 422) | `400 {"success":false,"error":"rejected"}` | `303` → `/?waitlist=error#lista-de-espera` |
+| Rate limit (429) | `429 … "rate-limit"` | igual que el error |
+| Key o grupo inválidos (401/403/404) | `503 … "configuration"` (se registra en los logs de Vercel) | igual que el error |
+| MailerLite caído, timeout (8 s) o 5xx | `502 … "server"` | igual que el error |
+| `Origin` de otro sitio | `403` (check del endpoint + `security.checkOrigin` de Astro) | — |
+
+## Campos personalizados en MailerLite
+
+El endpoint envía `fields.perfil` y `fields.idioma`. **Deben existir como campos personalizados** en MailerLite (Subscribers → Fields); si no, MailerLite descarta esos valores. `name` es un campo por defecto.
+
+## Double opt-in
+
+Por defecto, un alta por API queda activa sin correo de confirmación. Si quieres confirmación, activa en MailerLite **Account settings → Subscribe settings → "Double opt-in for API and integrations"**. El copy de éxito no promete confirmación, así que sirve en ambos casos.
 
 ## Contrato de UX (igual que Webbin)
 
-- El formulario conserva el fallback HTML nativo (`method="post"` + `action`).
-- La mejora progresiva vive en `src/scripts/waitlist.ts` (`initAllWaitlists`):
+- Fallback HTML nativo (`method="post"` + `action`) con redirección a páginas de gracias.
+- La mejora progresiva vive en `src/scripts/waitlist.ts`:
   - Estados `idle`, `submitting`, `success` y `error`.
-  - Errores tipados: `configuration`, `network`, `timeout` (10 s), `rate-limit`, `rejected`, `server` e `invalid-response`, con mensajes en ES y EN.
-- El estado se anuncia en `role="status"` + `aria-live="polite"`.
-- El éxito solo se muestra tras confirmar `success: true`. En el formulario completo se oculta el form, aparece el panel de éxito y recibe el foco.
-- Al tener éxito se emite el evento `binhive:waitlist-success` (burbujea desde el form) para conectar analítica después.
+  - Errores tipados: los que reporta el endpoint más `network`, `timeout` (10 s) e `invalid-response`, con mensajes en ES y EN.
+- El estado se anuncia en `role="status"` + `aria-live="polite"`. El éxito solo se muestra tras `success: true`; el panel de éxito recibe el foco.
+- Al tener éxito se emite el evento `binhive:waitlist-success` para conectar analítica después.

@@ -30,6 +30,7 @@ Criterios de Google Search Central y de los análisis on-page de Rank Math y Yoa
   - Desde 2023 Google limita los rich results de FAQ, pero el marcado sigue siendo válido y útil para motores generativos.
 - Open Graph y Twitter con `summary_large_image`: OG de 1200×630 por idioma (`public/og/og-{es,en}.png`) con alt, `og:locale` y `og:locale:alternate`.
 - `llms.txt` para motores generativos (GEO).
+- Las páginas de gracias son `noindex` y quedan fuera del sitemap.
 - Favicons (svg, ico, apple-touch), `site.webmanifest` y `theme-color`.
 
 ## Core Web Vitals

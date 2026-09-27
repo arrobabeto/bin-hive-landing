@@ -41,6 +41,9 @@ hero:
   secondary_cta_label: "See how it works"
   secondary_cta_href: "#how-it-works"
   microcopy: "No spam. We'll only write when we open spots."
+  privacy_note: "By joining you accept our"
+  privacy_link_label: "privacy notice"
+  privacy_link_href: "/en/privacy/"
   visual_alt: "Honeycomb with four active cells: Instagram, TikTok, YouTube Shorts and X"
 
 problem:
@@ -299,7 +302,7 @@ waitlist:
   submit_label: "Join the waitlist"
   submitting_label: "Sending…"
   success_heading: "Done, you're in the hive!"
-  success_body: "Check your inbox to confirm your spot. If you can't find it, look in promotions or spam."
+  success_body: "We'll write as soon as we open spots. Keep an eye on your inbox (and promotions) so you don't miss it."
 
 footer:
   tagline: "Bin Hive: AI agents for social media, organized like a hive."

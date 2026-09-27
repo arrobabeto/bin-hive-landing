@@ -41,6 +41,9 @@ hero:
   secondary_cta_label: "Ver cómo funciona"
   secondary_cta_href: "#como-funciona"
   microcopy: "Sin spam. Te escribimos cuando abramos lugares, y nada más."
+  privacy_note: "Al unirte aceptas nuestro"
+  privacy_link_label: "aviso de privacidad"
+  privacy_link_href: "/privacidad/"
   visual_alt: "Panal con cuatro celdas activas: Instagram, TikTok, YouTube Shorts y X"
 
 problem:
@@ -299,7 +302,7 @@ waitlist:
   submit_label: "Unirme a la lista de espera"
   submitting_label: "Enviando…"
   success_heading: "¡Listo, ya estás en la colmena!"
-  success_body: "Revisa tu correo para confirmar tu lugar. Si no lo ves, busca en promociones o spam."
+  success_body: "Te escribiremos en cuanto abramos lugares. Revisa tu bandeja de entrada (y promociones) para no perdértelo."
 
 footer:
   tagline: "Bin Hive: agentes de IA para redes sociales, organizados como una colmena."

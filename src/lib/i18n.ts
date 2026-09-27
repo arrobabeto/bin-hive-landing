@@ -46,6 +46,7 @@ export type SectionKey = keyof (typeof sectionAnchors)['es'];
 const pairedPaths: Record<string, string> = {
   '/': '/en/',
   '/privacidad/': '/en/privacy/',
+  '/gracias/': '/en/thanks/',
 };
 
 export function normalizeLocale(locale?: string): Locale {

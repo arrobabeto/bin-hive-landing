@@ -17,7 +17,7 @@ Presentar Bin Hive como producto y convertir visitas en **registros a la lista d
 ## Alcance
 
 - Una landing en ES (`/`) y EN (`/en/`), con avisos de privacidad (`/privacidad/`, `/en/privacy/`) y un 404.
-- Formulario de lista de espera con MailerLite, en dos instancias: la corta del hero y la completa del cierre.
+- Formulario de lista de espera con la API de MailerLite (endpoint propio), en dos instancias: la corta del hero y la completa del cierre. Hay páginas de gracias (`/gracias/`, `/en/thanks/`) para el fallback sin JS.
 - SEO técnico y on-page completo, con BSI.
 
 **Fuera de alcance:** precios, login o registro, blog, analítica (no hay pedido; el formulario emite `binhive:waitlist-success` para conectarla después).

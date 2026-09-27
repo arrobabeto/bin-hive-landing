@@ -3,7 +3,7 @@ import Honeycomb from '../ui/Honeycomb.astro';
 import { bf } from '../../lib/bsi';
 import type { HomeContent } from '../../lib/home-schema';
 import type { Locale } from '../../lib/i18n';
-import { waitlistAction } from '../../lib/waitlist';
+import { WAITLIST_ENDPOINT } from '../../lib/site';
 
 interface Props {
   lang: Locale;
@@ -15,7 +15,6 @@ interface Props {
 }
 
 const { lang, hero, hives, tickerWords, successMessage, submittingLabel } = Astro.props;
-const action = waitlistAction();
 ---
 
 <section class="home-hero home-honeycomb" aria-labelledby="hero-heading" {...bf('home.hero.shell', 'container')}>
@@ -32,7 +31,7 @@ const action = waitlistAction();
       <form
         class="home-hero__form home-card"
         method="post"
-        action={action}
+        action={WAITLIST_ENDPOINT}
         data-waitlist-form
         data-locale={lang}
         data-submitting-label={submittingLabel}
@@ -44,7 +43,7 @@ const action = waitlistAction();
             <input
               class="home-input"
               id="hero-email"
-              name="fields[email]"
+              name="email"
               type="email"
               autocomplete="email"
               inputmode="email"
@@ -56,12 +55,16 @@ const action = waitlistAction();
             </button>
           </div>
         </div>
-        <input type="hidden" name="fields[idioma]" value={lang} />
-        <input type="hidden" name="ml-submit" value="1" />
-        <input type="hidden" name="anticsrf" value="true" />
+        <input type="hidden" name="idioma" value={lang} />
         <div class="home-hp" aria-hidden="true">
           <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
         </div>
+        <p class="home-hero__privacy">
+          <span {...bf('home.hero.privacy_note', 'copy')}>{hero.privacy_note}</span>
+          <a class="home-link" href={hero.privacy_link_href} {...bf('home.hero.privacy_link_label', 'chrome_denied')}>
+            {hero.privacy_link_label}
+          </a>
+        </p>
         <p class="home-status" data-waitlist-status role="status" aria-live="polite"></p>
       </form>
 
@@ -126,6 +129,13 @@ const action = waitlistAction();
   .home-hero__row {
     display: grid;
     gap: 0.75rem;
+  }
+  .home-hero__privacy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    margin: 0;
+    font-size: var(--bh-text-sm);
   }
   .home-hero__meta {
     display: flex;

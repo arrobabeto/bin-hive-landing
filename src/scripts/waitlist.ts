@@ -1,7 +1,7 @@
-// Waitlist form — progressive enhancement over a native MailerLite POST.
+// Waitlist form — progressive enhancement over a native POST to our own
+// endpoint (/api/waitlist.json → MailerLite API, server-side).
 // Mirrors Webbin's src/scripts/web3forms.ts contract (states, typed errors,
 // timeout, aria-live status). ADR-004 · docs/FORMS.md
-import { isValidMailerLiteId } from '../lib/mailerlite-config.mjs';
 
 export type WaitlistState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -34,7 +34,7 @@ export const SUCCESS_EVENT = 'binhive:waitlist-success';
 
 const MESSAGES: Record<WaitlistLocale, Record<WaitlistErrorKind, string>> = {
   es: {
-    configuration: 'El formulario aún no está configurado. Intenta más tarde, por favor.',
+    configuration: 'La lista de espera no está disponible en este momento. Intenta más tarde, por favor.',
     network: 'No pudimos conectar con el servicio. Revisa tu conexión e intenta de nuevo.',
     timeout: 'No pudimos confirmar tu registro a tiempo. Espera un momento y vuelve a intentarlo.',
     'rate-limit': 'Hubo demasiados intentos seguidos. Espera unos minutos e intenta de nuevo.',
@@ -43,7 +43,7 @@ const MESSAGES: Record<WaitlistLocale, Record<WaitlistErrorKind, string>> = {
     'invalid-response': 'No pudimos confirmar tu registro. Tus datos siguen aquí para reintentar.',
   },
   en: {
-    configuration: "The form isn't configured yet. Please try again later.",
+    configuration: "The waitlist isn't available right now. Please try again later.",
     network: "We couldn't reach the service. Check your connection and try again.",
     timeout: "We couldn't confirm your sign-up in time. Wait a moment and try again.",
     'rate-limit': 'Too many attempts in a row. Wait a few minutes and try again.',
@@ -54,26 +54,28 @@ const MESSAGES: Record<WaitlistLocale, Record<WaitlistErrorKind, string>> = {
 };
 
 const SUCCESS_FALLBACK: Record<WaitlistLocale, string> = {
-  es: '¡Listo! Revisa tu correo para confirmar tu lugar.',
-  en: 'Done! Check your inbox to confirm your spot.',
+  es: '¡Listo, ya estás en la lista de espera!',
+  en: "Done, you're on the waitlist!",
 };
 
 export function messagesFor(locale: WaitlistLocale = 'es') {
   return MESSAGES[locale];
 }
 
-/** Extracts `{account}/forms/{form}` from a MailerLite action URL. */
-export function actionIds(action: string): { accountId: string; formId: string } | null {
-  const match = action.match(/\/jsonp\/([^/]+)\/forms\/([^/]+)\/subscribe/u);
-  if (!match?.[1] || !match[2]) return null;
-  return { accountId: decodeURIComponent(match[1]), formId: decodeURIComponent(match[2]) };
-}
+const SERVER_ERROR_KINDS = new Set<WaitlistErrorKind>(['configuration', 'rate-limit', 'rejected', 'server']);
 
-function errorForStatus(status: number, locale: WaitlistLocale): WaitlistSubmissionError {
+function errorFromPayload(payload: unknown, status: number, locale: WaitlistLocale): WaitlistSubmissionError {
   const messages = messagesFor(locale);
-  if (status === 429) return new WaitlistSubmissionError('rate-limit', messages['rate-limit'], status);
-  if (status >= 500) return new WaitlistSubmissionError('server', messages.server, status);
-  return new WaitlistSubmissionError('rejected', messages.rejected, status);
+  const reported =
+    typeof payload === 'object' && payload !== null && 'error' in payload ? String(payload.error) : '';
+  const kind: WaitlistErrorKind = SERVER_ERROR_KINDS.has(reported as WaitlistErrorKind)
+    ? (reported as WaitlistErrorKind)
+    : status === 429
+      ? 'rate-limit'
+      : status >= 500
+        ? 'server'
+        : 'rejected';
+  return new WaitlistSubmissionError(kind, messages[kind], status);
 }
 
 export function isHoneypotFilled(form: HTMLFormElement): boolean {
@@ -92,11 +94,6 @@ export async function submitWaitlist(
   { fetchImpl = fetch, timeoutMs = DEFAULT_TIMEOUT_MS, locale = 'es' }: SubmitOptions = {},
 ): Promise<void> {
   const messages = messagesFor(locale);
-  const ids = actionIds(form.action);
-  if (!ids || !isValidMailerLiteId(ids.accountId) || !isValidMailerLiteId(ids.formId)) {
-    throw new WaitlistSubmissionError('configuration', messages.configuration);
-  }
-
   const body = new FormData(form);
   body.delete(HONEYPOT_FIELD);
 
@@ -117,22 +114,20 @@ export async function submitWaitlist(
       throw new WaitlistSubmissionError('network', messages.network);
     }
 
-    if (!response.ok) throw errorForStatus(response.status, locale);
-
     let payload: unknown;
     try {
       payload = await response.json();
     } catch {
       if (controller.signal.aborted) throw new WaitlistSubmissionError('timeout', messages.timeout);
+      if (!response.ok) throw errorFromPayload(null, response.status, locale);
       throw new WaitlistSubmissionError('invalid-response', messages['invalid-response']);
     }
 
+    if (!response.ok) throw errorFromPayload(payload, response.status, locale);
     if (typeof payload !== 'object' || payload === null || !('success' in payload)) {
       throw new WaitlistSubmissionError('invalid-response', messages['invalid-response']);
     }
-    if (payload.success !== true) {
-      throw new WaitlistSubmissionError('rejected', messages.rejected, response.status);
-    }
+    if (payload.success !== true) throw errorFromPayload(payload, response.status, locale);
   } finally {
     window.clearTimeout(timeoutId);
   }
@@ -235,7 +230,7 @@ export function initAllWaitlists(root: Document = document): void {
   root.querySelectorAll<HTMLAnchorElement>('a[data-profile]').forEach((link) => {
     link.addEventListener('click', () => {
       const value = link.dataset.profile;
-      const radio = root.querySelector<HTMLInputElement>(`input[name="fields[perfil]"][value="${value}"]`);
+      const radio = root.querySelector<HTMLInputElement>(`input[name="perfil"][value="${value}"]`);
       if (radio) radio.checked = true;
     });
   });

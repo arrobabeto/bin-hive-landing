@@ -3,6 +3,9 @@ export const SITE_NAME = 'Bin Hive';
 export const SITE_URL = 'https://binhive.arrobabeto.com';
 export const THEME_COLOR = '#ffc21a';
 
+/** On-demand Vercel function that subscribes to MailerLite (ADR-004). */
+export const WAITLIST_ENDPOINT = '/api/waitlist.json';
+
 export const ORGANIZATION = {
   name: 'Arrobabeto Media',
   founder: 'Alberto (@arrobabeto)',

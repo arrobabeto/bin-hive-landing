@@ -9,8 +9,10 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     env:
-      PUBLIC_MAILERLITE_ACCOUNT_ID: ${{ secrets.PUBLIC_MAILERLITE_ACCOUNT_ID }}
-      PUBLIC_MAILERLITE_FORM_ID: ${{ secrets.PUBLIC_MAILERLITE_FORM_ID }}
+      # CI only compiles and verifies (never deploys): placeholder values satisfy
+      # astro:env validation. Real values live only in Vercel.
+      MAILERLITE_API_KEY: ci-build-only-placeholder-key
+      PUBLIC_MAILERLITE_GROUP_ID: '0'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

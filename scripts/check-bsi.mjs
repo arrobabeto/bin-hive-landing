@@ -14,7 +14,10 @@ import {
   requiresMarker,
 } from './bsi-lib.mjs';
 
-const DIST = join(ROOT, 'dist');
+// Static output: dist/ (plain static build) or .vercel/output/static (adapter).
+const DIST = [join(ROOT, '.vercel/output/static'), join(ROOT, 'dist')].find((dir) =>
+  existsSync(join(dir, 'index.html')),
+) ?? join(ROOT, 'dist');
 const HOME_PAGES = { es: 'index.html', en: 'en/index.html' };
 const problems = [];
 

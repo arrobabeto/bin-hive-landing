@@ -1,28 +1,27 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
-import { loadEnv } from 'vite';
-import { requireMailerLiteConfig } from './src/lib/mailerlite-config.mjs';
 
 const SITE = 'https://binhive.arrobabeto.com';
 // Pages whose slug differs per locale (the sitemap i18n option only pairs
 // identical paths), so their hreflang alternates are added explicitly.
 const translatedPairs = [[`${SITE}/privacidad/`, `${SITE}/en/privacy/`]];
 
-const isBuild = process.argv.includes('build');
-const modeFlagIndex = process.argv.indexOf('--mode');
-const mode =
-  modeFlagIndex >= 0 ? process.argv[modeFlagIndex + 1] : isBuild ? 'production' : 'development';
-const env = loadEnv(mode, process.cwd(), '');
-
-// ADR-004: never ship a waitlist form without real MailerLite ids.
-if (isBuild && mode === 'production') {
-  requireMailerLiteConfig(env.PUBLIC_MAILERLITE_ACCOUNT_ID, env.PUBLIC_MAILERLITE_FORM_ID);
-}
-
 export default defineConfig({
   site: SITE,
+  // Pages are prerendered; only src/pages/api/waitlist.json.ts runs on demand
+  // as a Vercel function (ADR-002).
   output: 'static',
+  adapter: vercel(),
+  // ADR-004: builds fail without MailerLite config; the key stays server-only.
+  env: {
+    schema: {
+      MAILERLITE_API_KEY: envField.string({ context: 'server', access: 'secret', min: 20 }),
+      PUBLIC_MAILERLITE_GROUP_ID: envField.string({ context: 'server', access: 'public', min: 1 }),
+    },
+    validateSecrets: true,
+  },
   trailingSlash: 'always',
   // Single-page landing: inline the CSS (~11 KB gzip) to avoid a
   // render-blocking request (ADR-007, Core Web Vitals).
@@ -34,7 +33,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => !/\/(404|gracias|thanks)\/?$/u.test(new URL(page).pathname),
       serialize(item) {
         const pair = translatedPairs.find((urls) => urls.includes(item.url));
         if (pair) {

@@ -416,6 +416,36 @@ surfaces:
     locales: [es, en]
     publication_target: github_content
     sample: Sin spam. Te escribimos cuando abramos lugares, y nada más.
+  - bf_id: home.hero.privacy_note
+    kind: copy
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.privacy_note
+    locales: [es, en]
+    publication_target: github_content
+    sample: Al unirte aceptas nuestro
+  - bf_id: home.hero.privacy_link_label
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.privacy_link_label
+    locales: [es, en]
+    publication_target: github_content
+    sample: aviso de privacidad
+    deny_reason: CTA / form / navigation label — UI chrome, not edit_text
+  - bf_id: home.hero.privacy_link_href
+    kind: chrome_denied
+    area: home
+    section: hero
+    path: src/content/home/{locale}.yaml
+    locator: github:src/content/home/{locale}.yaml#hero.privacy_link_href
+    locales: [es, en]
+    publication_target: github_content
+    sample: /privacidad/
+    deny_reason: Link target — UI chrome, not edit_text
+    notes: Rendered as an attribute of a marked sibling element; no own marker.
   - bf_id: home.hero.visual_alt
     kind: chrome_denied
     area: home
@@ -1929,7 +1959,7 @@ surfaces:
     locator: github:src/content/home/{locale}.yaml#waitlist.success_body
     locales: [es, en]
     publication_target: github_content
-    sample: Revisa tu correo para confirmar tu lugar. Si no lo ves, busca en promociones o spam.
+    sample: Te escribiremos en cuanto abramos lugares. Revisa tu bandeja de entrada (y promociones) para no perdértelo.
   - bf_id: shared.footer.tagline
     kind: copy
     area: shared

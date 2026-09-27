@@ -1,0 +1,52 @@
+---
+// Landing target for the no-JS form fallback (303 from /api/waitlist.json).
+// noindex; reuses the waitlist success copy (same BSI surfaces).
+import { getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { bf } from '../../lib/bsi';
+import { localizedPath, type Locale } from '../../lib/i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const home = await getEntry('home', lang);
+if (!home) throw new Error(`Missing content for ${lang}`);
+const { waitlist, nav } = home.data;
+const homeHref = localizedPath('/', lang);
+---
+
+<Layout
+  lang={lang}
+  title={waitlist.success_heading}
+  description={waitlist.success_body}
+  content={home.data}
+  anchorBase={homeHref}
+  noindex
+>
+  <section class="home-container home-thanks home-honeycomb">
+    <span class="home-thanks__check home-hex" aria-hidden="true">✓</span>
+    <h1 class="home-h1" {...bf('home.waitlist.success_heading', 'copy')}>{waitlist.success_heading}</h1>
+    <p class="home-lead" {...bf('home.waitlist.success_body', 'copy')}>{waitlist.success_body}</p>
+    <a class="home-btn" href={homeHref} aria-label={nav.home_aria_label}>← Bin Hive</a>
+  </section>
+</Layout>
+
+<style>
+  .home-thanks {
+    display: grid;
+    justify-items: start;
+    gap: 1.5rem;
+    padding-block: var(--bh-section-y);
+  }
+  .home-thanks__check {
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 5.2rem;
+    background: var(--bh-honey);
+    font-size: 2rem;
+    font-weight: 900;
+  }
+</style>

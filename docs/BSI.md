@@ -16,7 +16,7 @@ Este documento describe **cómo** se aplica aquí. Decisión: [ADR-006](./ADR-00
 
 | Artefacto | Qué es |
 |---|---|
-| `binflow/surface-inventory.yaml` | Inventario v1 (`project_key: bin-hive-landing`), con ~214 filas |
+| `binflow/surface-inventory.yaml` | Inventario v1 (`project_key: bin-hive-landing`), con ~217 filas |
 | `data-bf-id` / `data-bf-kind` / `data-bf-section` | Markers estáticos en el nodo raíz editable, generados solo con `bf()` (`src/lib/bsi.ts`) |
 | `scripts/bsi-lib.mjs` | Reglas compartidas: derivación de `bf_id`, kinds, schema y extracción de markers |
 | `scripts/sync-bsi.mjs` (`pnpm bsi:sync`) | Refresca el YAML desde el contenido; preserva `bf_id`, `notes` y `deny_reason`, y nunca borra huérfanos |

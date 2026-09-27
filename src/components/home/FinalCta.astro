@@ -2,7 +2,7 @@
 import { bf } from '../../lib/bsi';
 import type { HomeContent } from '../../lib/home-schema';
 import type { Locale } from '../../lib/i18n';
-import { waitlistAction } from '../../lib/waitlist';
+import { WAITLIST_ENDPOINT } from '../../lib/site';
 
 interface Props {
   lang: Locale;
@@ -12,7 +12,6 @@ interface Props {
   total: number;
 }
 const { lang, content, anchor, index, total } = Astro.props;
-const action = waitlistAction();
 const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
@@ -32,7 +31,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
       <form
         class="home-wait__form"
         method="post"
-        action={action}
+        action={WAITLIST_ENDPOINT}
         data-waitlist-form
         data-locale={lang}
         data-success-panel={`${anchor}-success`}
@@ -40,20 +39,20 @@ const pad = (n: number) => String(n).padStart(2, '0');
       >
         <div class="home-field">
           <label class="home-label" for="wl-name" {...bf('home.waitlist.name_label', 'chrome_denied')}>{content.name_label}</label>
-          <input class="home-input" id="wl-name" name="fields[name]" type="text" autocomplete="given-name" placeholder={content.name_placeholder} required maxlength="80" />
+          <input class="home-input" id="wl-name" name="name" type="text" autocomplete="given-name" placeholder={content.name_placeholder} required maxlength="80" />
         </div>
         <div class="home-field">
           <label class="home-label" for="wl-email" {...bf('home.waitlist.email_label', 'chrome_denied')}>{content.email_label}</label>
-          <input class="home-input" id="wl-email" name="fields[email]" type="email" autocomplete="email" inputmode="email" placeholder={content.email_placeholder} required />
+          <input class="home-input" id="wl-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder={content.email_placeholder} required />
         </div>
         <fieldset class="home-wait__fieldset">
           <legend class="home-label" {...bf('home.waitlist.profile_label', 'chrome_denied')}>{content.profile_label}</legend>
           <label class="home-choice">
-            <input type="radio" name="fields[perfil]" value="creador" required checked />
+            <input type="radio" name="perfil" value="creador" required checked />
             <span {...bf('home.waitlist.profile_creator_label', 'chrome_denied')}>{content.profile_creator_label}</span>
           </label>
           <label class="home-choice">
-            <input type="radio" name="fields[perfil]" value="agencia" />
+            <input type="radio" name="perfil" value="agencia" />
             <span {...bf('home.waitlist.profile_agency_label', 'chrome_denied')}>{content.profile_agency_label}</span>
           </label>
         </fieldset>
@@ -65,9 +64,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
           {content.privacy_link_label}
         </a>
 
-        <input type="hidden" name="fields[idioma]" value={lang} />
-        <input type="hidden" name="ml-submit" value="1" />
-        <input type="hidden" name="anticsrf" value="true" />
+        <input type="hidden" name="idioma" value={lang} />
         <div class="home-hp" aria-hidden="true">
           <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
         </div>
